@@ -44,8 +44,8 @@ jobs:
           name: Build docker image
           command: |
             TAG=0.1.$CIRCLE_BUILD_NUM
-            docker build -t $DOCKER_USER/la-peche-api:latest ./
-            docker build -t $DOCKER_USER/la-peche-api:$TAG ./
+            docker build -t $DOCKER_USER/la-peche-fe:latest ./
+            docker build -t $DOCKER_USER/la-peche-fe:$TAG ./
       - run:
           name: Check images
           command: docker images
@@ -53,11 +53,11 @@ jobs:
           name: Push images
           command: |
             TAG=0.1.$CIRCLE_BUILD_NUM
-            docker push $DOCKER_USER/la-peche-api:latest
-            docker push $DOCKER_USER/la-peche-api:$TAG
+            docker push $DOCKER_USER/la-peche-fe:latest
+            docker push $DOCKER_USER/la-peche-fe:$TAG
  
 workflows:
-  ci-api:
+  ci-web:
     jobs:
       - lint
       - build-and-deploy-image:
