@@ -25,7 +25,6 @@ module.exports = {
                 'almost-white': '#FEFEFE',
                 inactive: '#687079',
                 'inactive-base': '#F8FAFB',
-
             },
         },
     },
