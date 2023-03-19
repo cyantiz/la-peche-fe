@@ -17,7 +17,7 @@ const increment = () => counter.increment()
             Count: {{ counter.$state.count }}
         </n-button>
 
-        <draggable-box />
+        <!-- <draggable-box /> -->
 
         <div class="my-10">
             <n-image-group show-toolbar-tooltip>
@@ -29,10 +29,10 @@ const increment = () => counter.increment()
                 </n-space>
             </n-image-group>
         </div>
-        <div>
+        <div class="w-96">
             <n-tabs type="segment">
                 <n-tab-pane name="oasis" tab="Oasis"> Wonderwall </n-tab-pane>
-                <n-tab-pane name="the beatles" tab="The Beatles">
+                <n-tab-pane name="the beatles" tab="the Beatles">
                     Hey Jude
                 </n-tab-pane>
                 <n-tab-pane name="jay chou" tab="Jay Chou">
