@@ -43,7 +43,7 @@ const textSize = computed(() => TEXT_SIZES[props.size])
 </script>
 
 <template>
-    <div class="flex items-center" :style="{ gap: `${gap}px` }">
+    <NuxtLink to="/" class="flex items-center" :style="{ gap: `${gap}px` }">
         <img
             src="~/assets/img/logo256.png"
             alt="logo"
@@ -57,7 +57,7 @@ const textSize = computed(() => TEXT_SIZES[props.size])
         >
             Pēche
         </div>
-    </div>
+    </NuxtLink>
 </template>
 
 <style lang="less" scoped>
