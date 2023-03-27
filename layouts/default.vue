@@ -39,12 +39,15 @@ const collapsed = computed(() => {
 </script>
 
 <style lang="less" scoped>
+@navbar-height-desktop: 48px;
+@navbar-height-mobile: 100px;
+@breakpoint-mobile: 640px;
 div.body {
-    height: calc(100vh - 48px);
+    height: calc(100vh - @navbar-height-desktop);
 }
-@media (max-width: 640px) {
+@media (max-width: @breakpoint-mobile) {
     div.body {
-        height: calc(100vh - 100px);
+        height: calc(100vh - @navbar-height-mobile);
     }
 }
 </style>
