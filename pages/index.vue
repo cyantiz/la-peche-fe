@@ -1,12 +1,7 @@
-<script setup lang="ts">
-definePageMeta({
-    layout: 'default',
-    collapsed: true,
-})
-</script>
+<script setup lang="ts"></script>
 
 <template>
-    <div>index page (explore)</div>
+    <div></div>
 </template>
 
 <style lang="less" scoped></style>

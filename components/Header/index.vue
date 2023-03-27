@@ -59,8 +59,4 @@ const isMobile = breakPoints.smallerOrEqual('md')
     </header>
 </template>
 
-<style lang="less" scoped>
-header {
-    z-index: 100;
-}
-</style>
+<style lang="less" scoped></style>

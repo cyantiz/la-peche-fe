@@ -1,16 +1,14 @@
 <script setup lang="ts">
 defineProps<{}>()
 definePageMeta({
-    layout: 'default',
+    layout: 'custom',
 })
 
-const route = useRoute()
-const { id } = route.params
+const { id } = useRoute().params
 </script>
 
 <template>
     <div>id: {{ id }}</div>
-    <div>route name: {{ route.name }}</div>
 </template>
 
 <style lang="less" scoped></style>
