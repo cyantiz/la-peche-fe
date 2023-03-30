@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = withDefaults(
     defineProps<{
-        size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+        size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
         isWithText: boolean
     }>(),
     {
