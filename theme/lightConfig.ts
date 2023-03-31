@@ -1,15 +1,17 @@
 import { GlobalThemeOverrides } from 'naive-ui'
-import { color } from './color'
+import { Color } from './color'
 
 const themeOverrides: GlobalThemeOverrides = {
     common: {
-        primaryColor: color.BitterSweet,
-        primaryColorPressed: color.BitterSweet,
-        primaryColorHover: color.BitterSweet,
-        textColor1: color.RaisinBlack,
-        textColor2: color.RaisinBlack,
-        textColor3: color.RaisinBlack,
-        textColorBase: color.RaisinBlack,
+        baseColor: Color.AlmostWhite,
+        textColorBase: Color.RaisinBlack,
+        primaryColor: Color.BitterSweet,
+        primaryColorHover: Color.BitterSweetHover,
+        primaryColorPressed: Color.BitterSweetPressed,
+        primaryColorSuppl: Color.BitterSweetHover,
+        textColor1: Color.RaisinBlack,
+        textColor2: Color.RaisinBlack,
+        textColor3: Color.RaisinBlack,
         fontFamily: 'Roboto, sans-serif',
         borderRadius: '8px',
     },
