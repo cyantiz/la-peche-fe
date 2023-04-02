@@ -8,4 +8,4 @@ COPY . .
 
 RUN NODE_OPTIONS="--max-old-space-size=8192" npm run build
 
-ENTRYPOINT ["npm", "run", "preview"]
+ENTRYPOINT ["npm", "run", "start"]
