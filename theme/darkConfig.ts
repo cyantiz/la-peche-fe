@@ -1,9 +1,9 @@
 import { GlobalThemeOverrides } from 'naive-ui'
-import { color } from './color'
+import { Color } from './color'
 
 const themeOverrides: GlobalThemeOverrides = {
     common: {
-        primaryColor: color.BitterSweet,
+        primaryColor: Color.BitterSweet,
     },
 }
 

@@ -10,6 +10,9 @@ module.exports = {
         './nuxt.config.{js,ts}',
         './app.vue',
     ],
+    corePlugins: {
+        preflight: false,
+    },
     theme: {
         fontFamily: {
             sans: ['Roboto', 'sans-serif'],
@@ -25,6 +28,9 @@ module.exports = {
                 'almost-white': '#FEFEFE',
                 inactive: '#A8AAB9',
                 'inactive-base': '#F8FAFB',
+            },
+            transitionDuration: {
+                DEFAULT: '300ms',
             },
         },
     },
