@@ -3,10 +3,12 @@ const props = withDefaults(
     defineProps<{
         size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
         isWithText: boolean
+        canNavigate?: boolean
     }>(),
     {
         size: 'md',
         isWithText: false,
+        canNavigate: true,
     }
 )
 
@@ -43,7 +45,11 @@ const textSize = computed(() => TEXT_SIZES[props.size])
 </script>
 
 <template>
-    <NuxtLink to="/" class="flex items-center" :style="{ gap: `${gap}px` }">
+    <NuxtLink
+        :to="canNavigate ? '/' : undefined"
+        class="flex items-center"
+        :style="{ gap: `${gap}px` }"
+    >
         <img
             src="~/assets/img/logo256.png"
             alt="logo"
@@ -63,5 +69,6 @@ const textSize = computed(() => TEXT_SIZES[props.size])
 <style lang="less" scoped>
 .text {
     font-family: 'Montserrat', 'Roboto', sans-serif;
+    user-select: none;
 }
 </style>

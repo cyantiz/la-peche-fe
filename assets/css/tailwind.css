@@ -10,3 +10,10 @@
 a {
     text-decoration: none;
 }
+
+ul,
+p {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}

@@ -1,66 +1,44 @@
 <script setup lang="ts">
-import {
-    NDivider,
-    NForm,
-    NFormItem,
-    FormRules,
-    NInput,
-    NButton,
-} from 'naive-ui'
+import { NDivider, NForm, NFormItem, NInput, NButton } from 'naive-ui'
+import { LoginData } from '@/types/auth'
+import { useAuthStore } from '~/store/auth'
+import { loginFormRules } from '@/utils/validators/auth'
 
-const form = reactive({
-    email: '',
+definePageMeta({
+    layout: 'auth',
+})
+useHead({
+    title: 'Login',
+})
+
+const form = reactive<LoginData>({
+    username: '',
     password: '',
 })
 
-const rules: FormRules = {
-    email: [
-        { required: true, message: 'Please enter your email', trigger: 'blur' },
-        {
-            type: 'email',
-            message: 'Please enter a valid email address',
-            trigger: ['blur', 'change'],
-        },
-    ],
-    password: [
-        {
-            required: true,
-            message: 'Please enter your password',
-            trigger: 'blur',
-        },
-        {
-            min: 6,
-            max: 32,
-            message: 'Password length should be between 6 and 32 characters',
-            trigger: 'blur',
-        },
-    ],
-}
+const { login } = useAuthStore()
 
-function submitForm() {
-    // console.log('Form submitted:', { ...form })
+async function submitForm() {
+    await login({
+        ...form,
+    })
 }
 
 function loginWithGoogle() {
     // console.log('Login with Google')
 }
-
-defineProps<{}>()
-definePageMeta({
-    layout: 'auth',
-})
 </script>
 
 <template>
     <div class="mb-6 text-4xl font-bold">Welcome back!</div>
     <NForm
         :model="form"
-        :rules="rules"
+        :rules="loginFormRules"
         label-position="top"
         @submit.prevent="submitForm"
     >
-        <NFormItem label="Email" path="email" required>
-            <NInput v-model:value="form.email" placeholder="Email" />
+        <NFormItem label="Username" path="username" required>
+            <NInput v-model:value="form.username" placeholder="Username" />
         </NFormItem>
         <NFormItem label="Password" path="password" required>
             <NInput

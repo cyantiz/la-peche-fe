@@ -2,7 +2,6 @@
 import ThemeProvider from './theme/index.vue'
 defineProps<{}>()
 </script>
-
 <template>
     <theme-provider>
         <nuxt-layout>

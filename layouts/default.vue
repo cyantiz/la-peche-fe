@@ -1,17 +1,22 @@
 <template>
     <div class="flex w-screen flex-col">
-        <Header />
+        <LayoutCurtain :show="isShowLayoutCurtain || isAuthLoading" />
+        <ClientOnly>
+            <Header />
+        </ClientOnly>
         <NLayout has-sider class="body" content-style="width: 100%">
-            <NLayoutSider
-                v-if="!isMobile"
-                bordered
-                collapse-mode="width"
-                :collapsed-width="64"
-                :width="240"
-                :collapsed="collapsed"
-            >
-                <SidebarMenu :collapsed="collapsed" />
-            </NLayoutSider>
+            <ClientOnly>
+                <NLayoutSider
+                    v-if="!isMobile"
+                    bordered
+                    collapse-mode="width"
+                    :collapsed-width="64"
+                    :width="240"
+                    :collapsed="isCollapsedSidebar"
+                >
+                    <SidebarMenu :collapsed="isCollapsedSidebar" />
+                </NLayoutSider>
+            </ClientOnly>
             <NLayout class="w-full" content-style="width: 100%; padding: 1rem">
                 <slot />
             </NLayout>
@@ -21,20 +26,38 @@
 
 <script lang="ts" setup>
 import { breakpointsTailwind } from '@vueuse/core'
-import { NLayout, NLayoutSider } from 'naive-ui'
+import { NLayoutSider, NLayout } from 'naive-ui'
+import SidebarMenu from '@/components/SidebarMenu/index.vue'
+import { useAuthStore } from '~/store/auth'
 
-const route = useRoute()
+const auth = useAuthStore()
+const isAuthLoading = computed(() => auth.loading)
+// handle show/hide layout curtain
+const isShowLayoutCurtain = ref<boolean>(true)
+
 const breakPoints = useBreakpoints(breakpointsTailwind)
-const tailwindLargeThanLg = breakPoints.smallerOrEqual('lg')
-const isMobile = breakPoints.smallerOrEqual('md')
-
+// handle dynamic styling for sidebar
+const route = useRoute()
 const COLLAPSED_SIDEBAR_PAGES = ['messages']
 
-const collapsed = computed(() => {
-    if (COLLAPSED_SIDEBAR_PAGES.includes(route.name as string)) {
-        return true
+const isCollapsedSidebar = computed(
+    () =>
+        COLLAPSED_SIDEBAR_PAGES.includes(String(route.name)) ||
+        breakPoints.smallerOrEqual('lg').value
+)
+
+// handle dynamic styling for header
+const isMobile = breakPoints.smallerOrEqual('md')
+
+onMounted(async () => {
+    if (process.client) {
+        await new Promise<void>((resolve) => {
+            setTimeout(() => {
+                resolve()
+            }, 300)
+        })
+        isShowLayoutCurtain.value = false
     }
-    return tailwindLargeThanLg.value
 })
 </script>
 
