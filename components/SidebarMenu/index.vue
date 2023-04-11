@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { h } from 'vue'
-import type { MenuOption } from 'naive-ui'
-import { NMenu } from 'naive-ui'
+import { MenuOption, NMenu } from 'naive-ui'
 import {
     PhMagnifyingGlass,
     PhHeart,
@@ -49,8 +47,8 @@ const menuOptions: MenuOption[] = [
     },
 ]
 
-function onItemSelect(value: string) {
-    router.push({ name: value })
+function onItemSelect(name: string) {
+    router.push({ name })
 }
 
 function renderLabel(option: MenuOption) {

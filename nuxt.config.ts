@@ -1,8 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { resolve } from 'path'
+import { NuxtConfig } from '@nuxt/types'
 
-export default defineNuxtConfig({
+const config: NuxtConfig = {
     ssr: true,
+
     modules: [
         'nuxt-icon',
         '@vueuse/nuxt',
@@ -18,6 +20,7 @@ export default defineNuxtConfig({
             },
         ],
     ],
+
     css: ['@/assets/css/main.less'],
 
     postcss: {
@@ -29,12 +32,20 @@ export default defineNuxtConfig({
         },
     },
 
+    plugins: [
+        {
+            src: '~/plugins/nuxt-loading.ts',
+            mode: 'client',
+        },
+    ],
+
     alias: {
         '@@': resolve(__dirname, 'pages'),
         '~~': resolve(__dirname, 'components'),
     },
 
     app: {
+        __buildAssetsURL: '/_nuxt/',
         head: {
             meta: [{ name: 'naive-ui-style' }, { name: 'vueuc-style' }],
             link: [
@@ -50,6 +61,11 @@ export default defineNuxtConfig({
                 {
                     href: 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap',
                     rel: 'stylesheet',
+                },
+                {
+                    rel: 'icon',
+                    type: 'image/x-icon',
+                    href: '/_nuxt/assets/favicon.ico',
                 },
             ],
         },
@@ -76,4 +92,6 @@ export default defineNuxtConfig({
                     : [],
         },
     },
-})
+}
+
+export default config

@@ -2,7 +2,7 @@
     <div class="flex h-screen w-screen justify-center">
         <div class="flex w-full justify-center lg:w-auto">
             <div
-                class="flex h-full w-full max-w-[512px] flex-col gap-4 self-start py-6 px-14 lg:w-[512px]"
+                class="flex h-full w-full max-w-[512px] flex-col gap-4 self-start px-14 py-6 lg:w-[512px]"
             >
                 <Logo is-with-text />
                 <div class="flex h-full w-full flex-col justify-center">

@@ -3,64 +3,69 @@ import {
     NDivider,
     NForm,
     NFormItem,
-    FormRules,
     NInput,
     NButton,
+    useLoadingBar,
+    useDialog,
 } from 'naive-ui'
+import { LoginRequestBody } from '@/types/api/auth'
+import { useAuthStore } from '~/store/auth'
+import { loginFormRules } from '@/utils/validators/auth'
 
-const form = reactive({
-    email: '',
+definePageMeta({
+    layout: 'auth',
+})
+useHead({
+    title: 'Login',
+})
+
+const form = reactive<LoginRequestBody>({
+    username: '',
     password: '',
 })
 
-const rules: FormRules = {
-    email: [
-        { required: true, message: 'Please enter your email', trigger: 'blur' },
-        {
-            type: 'email',
-            message: 'Please enter a valid email address',
-            trigger: ['blur', 'change'],
-        },
-    ],
-    password: [
-        {
-            required: true,
-            message: 'Please enter your password',
-            trigger: 'blur',
-        },
-        {
-            min: 6,
-            max: 32,
-            message: 'Password length should be between 6 and 32 characters',
-            trigger: 'blur',
-        },
-    ],
-}
+const pending = ref<boolean>(false)
 
-function submitForm() {
-    // console.log('Form submitted:', { ...form })
+const { login } = useAuthStore()
+
+const loadingBar = useLoadingBar()
+const dialog = useDialog()
+
+async function submitForm() {
+    try {
+        loadingBar.start()
+        pending.value = true
+        await login({
+            ...form,
+        })
+        loadingBar.finish()
+    } catch (error: any) {
+        loadingBar.error()
+        dialog.error({
+            title: 'Login failed',
+            content: error?.response?._data.message || 'Unknown error',
+            positiveText: 'Okay',
+        })
+    } finally {
+        pending.value = false
+    }
 }
 
 function loginWithGoogle() {
     // console.log('Login with Google')
 }
-
-defineProps<{}>()
-definePageMeta({
-    layout: 'auth',
-})
 </script>
 
 <template>
     <div class="mb-6 text-4xl font-bold">Welcome back!</div>
     <NForm
         :model="form"
-        :rules="rules"
+        :rules="loginFormRules"
         label-position="top"
         @submit.prevent="submitForm"
     >
-        <NFormItem label="Email" path="email" required>
-            <NInput v-model:value="form.email" placeholder="Email" />
+        <NFormItem label="Username" path="username" required>
+            <NInput v-model:value="form.username" placeholder="Username" />
         </NFormItem>
         <NFormItem label="Password" path="password" required>
             <NInput
@@ -69,7 +74,9 @@ definePageMeta({
                 placeholder="Password"
             />
         </NFormItem>
-        <NButton type="primary" attr-type="submit">Login</NButton>
+        <NButton :loading="pending" type="primary" attr-type="submit"
+            >Login</NButton
+        >
     </NForm>
     <NDivider> Or </NDivider>
     <LoginWithGoogleButton @click="loginWithGoogle" />
