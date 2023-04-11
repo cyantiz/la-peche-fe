@@ -1,6 +1,6 @@
-import { Role } from '../Role'
+import { Role } from '../enums/Role'
 
-export type LoginData = {
+export type LoginRequestBody = {
     username: string
     password: string
 }

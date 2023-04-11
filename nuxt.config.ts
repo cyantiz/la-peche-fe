@@ -32,6 +32,13 @@ const config: NuxtConfig = {
         },
     },
 
+    plugins: [
+        {
+            src: '~/plugins/nuxt-loading.ts',
+            mode: 'client',
+        },
+    ],
+
     alias: {
         '@@': resolve(__dirname, 'pages'),
         '~~': resolve(__dirname, 'components'),

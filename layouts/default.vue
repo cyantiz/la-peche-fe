@@ -26,18 +26,21 @@
 
 <script lang="ts" setup>
 import { breakpointsTailwind } from '@vueuse/core'
-import { NLayoutSider, NLayout } from 'naive-ui'
+import { NLayoutSider, NLayout, useLoadingBar } from 'naive-ui'
 import SidebarMenu from '@/components/SidebarMenu/index.vue'
 import { useAuthStore } from '~/store/auth'
 
 const auth = useAuthStore()
+const route = useRoute()
+const loadingBar = useLoadingBar()
+
 const isAuthLoading = computed(() => auth.loading)
+
 // handle show/hide layout curtain
 const isShowLayoutCurtain = ref<boolean>(true)
 
 const breakPoints = useBreakpoints(breakpointsTailwind)
 // handle dynamic styling for sidebar
-const route = useRoute()
 const COLLAPSED_SIDEBAR_PAGES = ['messages']
 
 const isCollapsedSidebar = computed(
@@ -50,6 +53,7 @@ const isCollapsedSidebar = computed(
 const isMobile = breakPoints.smallerOrEqual('md')
 
 onMounted(async () => {
+    loadingBar.start()
     if (process.client) {
         await new Promise<void>((resolve) => {
             setTimeout(() => {
@@ -59,6 +63,13 @@ onMounted(async () => {
         isShowLayoutCurtain.value = false
     }
 })
+
+watch(
+    () => isShowLayoutCurtain.value || isAuthLoading.value,
+    (val) => {
+        if (!val) loadingBar.finish()
+    }
+)
 </script>
 
 <style lang="less" scoped>

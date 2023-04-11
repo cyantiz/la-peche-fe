@@ -1,6 +1,14 @@
-<script setup lang="ts">
-import { NDivider, NForm, NFormItem, NInput, NButton } from 'naive-ui'
-import { LoginData } from '@/types/auth'
+<script lang="ts" setup>
+import {
+    NDivider,
+    NForm,
+    NFormItem,
+    NInput,
+    NButton,
+    useLoadingBar,
+    useDialog,
+} from 'naive-ui'
+import { LoginRequestBody } from '@/types/api/auth'
 import { useAuthStore } from '~/store/auth'
 import { loginFormRules } from '@/utils/validators/auth'
 
@@ -11,17 +19,36 @@ useHead({
     title: 'Login',
 })
 
-const form = reactive<LoginData>({
+const form = reactive<LoginRequestBody>({
     username: '',
     password: '',
 })
 
+const pending = ref<boolean>(false)
+
 const { login } = useAuthStore()
 
+const loadingBar = useLoadingBar()
+const dialog = useDialog()
+
 async function submitForm() {
-    await login({
-        ...form,
-    })
+    try {
+        loadingBar.start()
+        pending.value = true
+        await login({
+            ...form,
+        })
+        loadingBar.finish()
+    } catch (error: any) {
+        loadingBar.error()
+        dialog.error({
+            title: 'Login failed',
+            content: error?.response?._data.message || 'Unknown error',
+            positiveText: 'Okay',
+        })
+    } finally {
+        pending.value = false
+    }
 }
 
 function loginWithGoogle() {
@@ -47,7 +74,9 @@ function loginWithGoogle() {
                 placeholder="Password"
             />
         </NFormItem>
-        <NButton type="primary" attr-type="submit">Login</NButton>
+        <NButton :loading="pending" type="primary" attr-type="submit"
+            >Login</NButton
+        >
     </NForm>
     <NDivider> Or </NDivider>
     <LoginWithGoogleButton @click="loginWithGoogle" />

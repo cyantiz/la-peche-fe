@@ -1,8 +1,11 @@
-// boiler plate pinia
-
 import jwtDecode from 'jwt-decode'
 import { defineStore } from 'pinia'
-import { LoginResponse, LoginData, AuthUser, AuthPayload } from '~/types/auth'
+import {
+    LoginResponse,
+    LoginRequestBody,
+    AuthUser,
+    AuthPayload,
+} from '~/types/api/auth'
 
 type AuthData = {
     access_token: string
@@ -22,15 +25,19 @@ export const useAuthStore = defineStore({
         isAuth(): Boolean {
             return this.access_token !== ''
         },
+        bearerToken(): string {
+            if (!this.access_token) return ''
+            return `Bearer ${this.access_token}`
+        },
     },
     actions: {
-        async login({ username, password }: LoginData) {
-            const data = await useFetchApi<LoginResponse>('/auth/login', {
+        async login({ username, password }: LoginRequestBody) {
+            const data = await useApiPost<LoginResponse>('/auth/login', {
                 body: {
                     username,
                     password,
                 },
-            }).POST()
+            })
 
             useCookie('access_token', {
                 sameSite: 'strict',
@@ -47,15 +54,14 @@ export const useAuthStore = defineStore({
 
         async refreshToken() {
             try {
-                const data = await useFetchApi<{ accessToken: string }>(
-                    '/auth/refresh',
-                    {
-                        method: 'POST',
-                        body: {
-                            refreshToken: useCookie('refresh_token').value,
-                        },
-                    }
-                ).POST()
+                const data = await useApiPost<{
+                    accessToken: string
+                }>('/auth/refresh', {
+                    method: 'POST',
+                    body: {
+                        refreshToken: useCookie('refresh_token').value,
+                    },
+                })
 
                 this.access_token = data.accessToken
                 const payload = jwtDecode<AuthPayload>(data.accessToken)
