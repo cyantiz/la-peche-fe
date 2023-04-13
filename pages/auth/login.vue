@@ -7,10 +7,14 @@ import {
     NButton,
     useLoadingBar,
     useDialog,
+    FormValidationError,
+    FormInst,
+    useNotification,
 } from 'naive-ui'
 import { LoginRequestBody } from '@/types/api/auth'
 import { useAuthStore } from '~/store/auth'
 import { loginFormRules } from '@/utils/validators/auth'
+import { useUIStore } from '~/store/ui'
 
 definePageMeta({
     layout: 'auth',
@@ -18,6 +22,8 @@ definePageMeta({
 useHead({
     title: 'Login',
 })
+
+const formRef = ref<FormInst | null>(null)
 
 const form = reactive<LoginRequestBody>({
     username: '',
@@ -28,10 +34,12 @@ const pending = ref<boolean>(false)
 
 const { login } = useAuthStore()
 
+const { setNotificationPlacement } = useUIStore()
 const loadingBar = useLoadingBar()
 const dialog = useDialog()
+const notification = useNotification()
 
-async function submitForm() {
+async function handleLogin() {
     try {
         loadingBar.start()
         pending.value = true
@@ -51,6 +59,24 @@ async function submitForm() {
     }
 }
 
+function submitForm(e: Event) {
+    e.preventDefault()
+
+    formRef.value?.validate((errors: FormValidationError[] | undefined) => {
+        if (!errors) {
+            handleLogin()
+        } else {
+            setNotificationPlacement('top')
+            console.log(useUIStore().notificationPlacement)
+            errors.forEach((item) =>
+                item.forEach((error) => {
+                    notification.error({ title: error.message })
+                })
+            )
+        }
+    })
+}
+
 function loginWithGoogle() {
     // console.log('Login with Google')
 }
@@ -59,19 +85,25 @@ function loginWithGoogle() {
 <template>
     <div class="mb-6 text-4xl font-bold">Welcome back!</div>
     <NForm
+        ref="formRef"
         :model="form"
         :rules="loginFormRules"
         label-position="top"
         @submit.prevent="submitForm"
     >
         <NFormItem label="Username" path="username" required>
-            <NInput v-model:value="form.username" placeholder="Username" />
+            <NInput
+                v-model:value="form.username"
+                placeholder="@username"
+                @keydown.enter.prevent
+            />
         </NFormItem>
         <NFormItem label="Password" path="password" required>
             <NInput
                 v-model:value="form.password"
                 type="password"
-                placeholder="Password"
+                placeholder="∗∗∗∗∗∗"
+                @keydown.enter.prevent
             />
         </NFormItem>
         <NButton :loading="pending" type="primary" attr-type="submit"
