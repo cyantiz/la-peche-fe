@@ -24,7 +24,6 @@ export const loginFormRules: FormRules = {
         {
             min: 6,
             max: 32,
-            pattern: /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
             message: 'Password length should be between 6 and 32 characters',
             trigger: 'blur',
         },
@@ -67,7 +66,7 @@ export const registerFormRules: FormRules = {
         {
             min: 6,
             max: 20,
-            pattern: /^[A-Za-z]+$/,
+            pattern: /^[A-Za-z ]+$/,
             message: 'Please enter a valid name',
             trigger: 'blur',
         },

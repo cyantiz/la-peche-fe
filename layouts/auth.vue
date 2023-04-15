@@ -1,5 +1,6 @@
 <template>
     <div class="flex h-screen w-screen justify-center">
+        <LayoutCurtain :show="isShowLayoutCurtain" />
         <div class="flex w-full justify-center lg:w-auto">
             <div
                 class="flex h-full w-full max-w-[512px] flex-col gap-4 self-start px-14 py-6 lg:w-[512px]"
@@ -21,6 +22,26 @@
         </div>
     </div>
 </template>
+
+<script lang="ts" setup>
+import { useLoadingBar } from 'naive-ui'
+
+const loadingBar = useLoadingBar()
+
+const isShowLayoutCurtain = ref<boolean>(true)
+onMounted(async () => {
+    loadingBar.start()
+    if (process.client) {
+        await new Promise<void>((resolve) => {
+            setTimeout(() => {
+                resolve()
+            }, 400)
+        })
+        isShowLayoutCurtain.value = false
+        loadingBar.finish()
+    }
+})
+</script>
 
 <style lang="less" scoped>
 .bg-image {

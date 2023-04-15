@@ -22,3 +22,15 @@ export type AuthPayload = {
 }
 
 export type AuthUser = Omit<AuthPayload, 'iat' | 'exp'>
+
+export type RegisterRequestBody = {
+    email: string
+    name: string
+    username: string
+    password: string
+}
+
+export type RegisterResponse = {
+    accessToken: string
+    refreshToken: string
+}

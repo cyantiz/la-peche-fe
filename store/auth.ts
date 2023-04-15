@@ -5,6 +5,8 @@ import {
     LoginRequestBody,
     AuthUser,
     AuthPayload,
+    RegisterRequestBody,
+    RegisterResponse,
 } from '~/types/api/auth'
 
 type AuthData = {
@@ -31,12 +33,9 @@ export const useAuthStore = defineStore({
         },
     },
     actions: {
-        async login({ username, password }: LoginRequestBody) {
+        async login(formData: LoginRequestBody) {
             const data = await useApiPost<LoginResponse>('/auth/login', {
-                body: {
-                    username,
-                    password,
-                },
+                body: formData,
             })
 
             useCookie('access_token', {
@@ -82,6 +81,24 @@ export const useAuthStore = defineStore({
                 console.log(err)
             }
             this.loading = false
+        },
+
+        async register(formData: RegisterRequestBody) {
+            const data = await useApiPost<RegisterResponse>('/auth/register', {
+                body: formData,
+            })
+
+            useCookie('access_token', {
+                sameSite: 'strict',
+            }).value = data.accessToken
+            useCookie('refresh_token', {
+                sameSite: 'strict',
+            }).value = data.refreshToken
+
+            this.access_token = data.accessToken
+            const payload = jwtDecode<AuthPayload>(data.accessToken)
+            this.user = payload
+            location.reload()
         },
 
         logout() {

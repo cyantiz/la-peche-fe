@@ -58,7 +58,7 @@ onMounted(async () => {
         await new Promise<void>((resolve) => {
             setTimeout(() => {
                 resolve()
-            }, 300)
+            }, 400)
         })
         isShowLayoutCurtain.value = false
     }
@@ -70,6 +70,16 @@ watch(
         if (!val) loadingBar.finish()
     }
 )
+
+// const router = useRouter()
+
+// router.beforeEach(() => {
+//     loadingBar.start()
+// })
+
+// router.afterEach(() => {
+//     loadingBar.finish()
+// })
 </script>
 
 <style lang="less" scoped>

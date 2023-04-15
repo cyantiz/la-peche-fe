@@ -39,7 +39,7 @@ const loadingBar = useLoadingBar()
 const dialog = useDialog()
 const notification = useNotification()
 
-async function handleLogin() {
+async function handleLoginRequest() {
     try {
         loadingBar.start()
         pending.value = true
@@ -64,13 +64,13 @@ function submitForm(e: Event) {
 
     formRef.value?.validate((errors: FormValidationError[] | undefined) => {
         if (!errors) {
-            handleLogin()
+            handleLoginRequest()
         } else {
             setNotificationPlacement('top')
             console.log(useUIStore().notificationPlacement)
             errors.forEach((item) =>
                 item.forEach((error) => {
-                    notification.error({ title: error.message })
+                    notification.error({ title: error.message, duration: 3000 })
                 })
             )
         }
@@ -83,35 +83,50 @@ function loginWithGoogle() {
 </script>
 
 <template>
-    <div class="mb-6 text-4xl font-bold">Welcome back!</div>
-    <NForm
-        ref="formRef"
-        :model="form"
-        :rules="loginFormRules"
-        label-position="top"
-        @submit.prevent="submitForm"
-    >
-        <NFormItem label="Username" path="username" required>
-            <NInput
-                v-model:value="form.username"
-                placeholder="@username"
-                @keydown.enter.prevent
-            />
-        </NFormItem>
-        <NFormItem label="Password" path="password" required>
-            <NInput
-                v-model:value="form.password"
-                type="password"
-                placeholder="∗∗∗∗∗∗"
-                @keydown.enter.prevent
-            />
-        </NFormItem>
-        <NButton :loading="pending" type="primary" attr-type="submit"
-            >Login</NButton
-        >
-    </NForm>
-    <NDivider> Or </NDivider>
-    <LoginWithGoogleButton @click="loginWithGoogle" />
+    <div class="space-between flex flex-col">
+        <div>
+            <div class="mb-6 text-4xl font-bold">Welcome back!</div>
+            <NForm
+                ref="formRef"
+                :model="form"
+                :rules="loginFormRules"
+                label-position="top"
+                @submit.prevent="submitForm"
+            >
+                <NFormItem label="Username" path="username" required>
+                    <NInput
+                        v-model:value="form.username"
+                        placeholder="@username"
+                        @keydown.enter.prevent
+                    />
+                </NFormItem>
+                <NFormItem label="Password" path="password" required>
+                    <NInput
+                        v-model:value="form.password"
+                        type="password"
+                        placeholder="∗∗∗∗∗∗"
+                        @keydown.enter.prevent
+                    />
+                </NFormItem>
+                <NButton :loading="pending" type="primary" attr-type="submit"
+                    >Login</NButton
+                >
+            </NForm>
+            <NDivider> Or </NDivider>
+            <LoginWithGoogleButton @click="loginWithGoogle" />
+        </div>
+
+        <div class="mt-12 flex flex-col items-center">
+            <span> Don't have an account yet? </span>
+            <NButton
+                type="success"
+                block
+                @click="$router.push('/auth/register')"
+            >
+                Register now
+            </NButton>
+        </div>
+    </div>
 </template>
 
 <style lang="less" scoped></style>

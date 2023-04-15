@@ -53,7 +53,9 @@ function onItemSelect(name: string) {
 
 function renderLabel(option: MenuOption) {
     return h(resolveComponent('nuxt-link'), {
-        to: option.key?.toString(),
+        to: {
+            name: option.key?.toString(),
+        },
         innerHTML: option.label,
     })
 }
