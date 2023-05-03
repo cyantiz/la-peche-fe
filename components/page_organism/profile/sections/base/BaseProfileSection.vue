@@ -25,7 +25,7 @@ const closeModal = () => {
 
 <template>
     <div
-        class="profile__section neu-border-3 neu-shadow-rt-3 inline-flex flex-col items-center rounded-xl bg-yellow-green-crayola bg-opacity-10 p-3"
+        class="profile__section neu-border-3 inline-flex flex-col items-center rounded-lg bg-white p-3"
         :class="{ 'w-full': block }"
     >
         <div
@@ -34,13 +34,13 @@ const closeModal = () => {
             <span class="text-xl font-bold">
                 {{ title }}
             </span>
-            <PhPencilSimple
+            <div
                 v-if="haveEditModal"
-                :size="24"
-                weight="fill"
-                class="cursor-pointer text-bitter-sweet transition-all hover:scale-110"
+                class="neu-border-2 neu-shadow-rt-2 hover:neu-shadow-0 bg-theme flex cursor-pointer items-center justify-center rounded-md p-1 text-white transition-all duration-200 hover:-translate-y-0.5 hover:translate-x-0.5"
                 @click="() => openModal()"
-            />
+            >
+                <PhPencilSimple :size="20" weight="fill" />
+            </div>
         </div>
 
         <div class="profile__section__content w-full">

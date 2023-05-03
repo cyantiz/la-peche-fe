@@ -7,14 +7,13 @@ useHead({
 })
 
 const images = ref<string[]>([
-    'https://img.washingtonpost.com/rf/image_480w/2010-2019/WashingtonPost/2014/03/25/Style/Images/10000041H6676246.jpg?uuid=T6rUJLO1EeOMtihAUlVNdA',
+    'https://i.pinimg.com/originals/f7/4b/d3/f74bd336c65ea7dae95702df3f760840.jpg',
     '',
     '',
     '',
     '',
     '',
 ])
-console.log(images.value)
 </script>
 
 <template>

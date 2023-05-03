@@ -22,7 +22,8 @@ const props = defineProps<Props>()
 @import url('~/assets/css/neu_brutalism.less');
 
 a.router-link-active.router-link-exact-active {
-    @apply bg-bitter-sweet text-white;
+    @apply text-white;
+    background: var(--theme-primary-color);
     transform: translateY(-1px) translateX(1px) !important;
     .neu-shadow-lb-2;
 }

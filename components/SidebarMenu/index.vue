@@ -79,11 +79,11 @@ function expandIcon() {
 <template>
     <div class="flex h-full flex-col p-4 pr-0">
         <div
-            class="neu-border-2 neu-shadow-lb-4 flex flex-col gap-8 rounded-2xl bg-yellow-green-crayola bg-opacity-10 pt-4"
+            class="neu-border-2 neu-shadow-lb-4 bg-theme-dim flex flex-col gap-8 rounded-lg pt-4"
         >
             <div class="info flex w-full flex-col items-center gap-3">
                 <div
-                    class="neu-border-2 neu-shadow-lb-3 flex overflow-hidden rounded-xl"
+                    class="neu-border-2 neu-shadow-lb-3 flex overflow-hidden rounded-lg"
                 >
                     <Avatar :size="collapsed ? 40 : 192" />
                 </div>
@@ -91,20 +91,18 @@ function expandIcon() {
                     <div class="w-48 text-lg font-bold">
                         {{ auth.user.name }}
                     </div>
-                    <div>@{{ auth.user.username }}</div>
+                    <div class="font-medium">@{{ auth.user.username }}</div>
                 </div>
                 <div v-if="!collapsed" class="statistic flex w-48 gap-3">
                     <div class="statistic__likes flex-1">
-                        <div class="text-base font-semibold text-bitter-sweet">
+                        <div class="text-theme text-base font-semibold">
                             888
                         </div>
-                        <div class="font-medium text-inactive">Likes</div>
+                        <div class="font-medium text-black">Likes</div>
                     </div>
                     <div class="statistic__matches flex-1">
-                        <div class="text-base font-semibold text-bitter-sweet">
-                            88
-                        </div>
-                        <div class="font-medium text-inactive">Matches</div>
+                        <div class="text-theme text-base font-semibold">88</div>
+                        <div class="font-medium text-black">Matches</div>
                     </div>
                 </div>
             </div>

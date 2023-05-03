@@ -1,6 +1,3 @@
-// import { color } from './theme/color'
-// this line above doesn't work because cannot use import statement outside a module
-
 module.exports = {
     content: [
         './components/**/*.{js,vue,ts}',
@@ -28,6 +25,7 @@ module.exports = {
                 'almost-white': '#FEFEFE',
                 cherry: '#CA1919',
                 inactive: '#A8AAB9',
+                ocean: '#63B9DB',
                 'inactive-base': '#F8FAFB',
             },
             transitionDuration: {

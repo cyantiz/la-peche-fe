@@ -1,13 +1,14 @@
-@import url('./tailwind.css');
-@import url('./colors.less');
-@import url('./neu_brutalism.less');
+@import url('assets/css/tailwind.css');
+@import url('assets/css/colors.less');
+@import url('assets/css/neu_brutalism.less');
+
+@import url('assets/css/theme.less');
 
 html,
 body {
     @apply text-raisin-black;
     font-family: 'Roboto', sans-serif !important;
 }
-
 
 .n-modal.n-dialog {
     .neu-border-4;
@@ -38,8 +39,4 @@ body {
     .n-input__state-border {
         transition: all ease .3s;
     }
-}
-
-.n-alert {
-    .neu-shadow-rt-2-ocean;
 }

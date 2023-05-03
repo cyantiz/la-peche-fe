@@ -114,7 +114,11 @@ onMounted(() => {
                         @keydown.enter.prevent
                     />
                 </NFormItem>
-                <NButton :loading="pending" type="primary" attr-type="submit"
+                <NButton
+                    :loading="pending"
+                    type="primary"
+                    attr-type="submit"
+                    block
                     >Login</NButton
                 >
             </NForm>

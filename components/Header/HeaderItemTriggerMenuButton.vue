@@ -18,7 +18,7 @@ const classes = computed(() => {
             size = 'p-[5px]'
             break
         case 'small':
-            size = 'p-[10px]'
+            size = 'p-2'
             break
         case 'medium':
             size = 'p-3'
@@ -44,7 +44,7 @@ const classes = computed(() => {
             break
     }
 
-    return `cursor-pointer bg-white hover:bg-yellow-green-crayola hover:bg-opacity-10 neu-border-2 neu-shadow-lb-2 hover:neu-shadow-0 hover:-translate-x-[1px] hover:translate-y-[1px] transition-all duration-200 flex items-center justify-center ${size} ${shape}`
+    return `cursor-pointer bg-white hover:bg-theme hover:text-white neu-border-2  focus:text-white focus:bg-theme focus:neu-shadow-0 neu-shadow-lb-2 focus:-translate-x-[2px] focus:translate-y-[2px] transition-all duration-200 flex items-center justify-center relative group ${size} ${shape}`
 })
 
 const iconSize = computed(() => {
@@ -52,7 +52,7 @@ const iconSize = computed(() => {
         case 'tiny':
             return 16
         case 'small':
-            return 20
+            return 18
         case 'medium':
             return 28
     }
@@ -60,9 +60,15 @@ const iconSize = computed(() => {
 </script>
 
 <template>
-    <div :class="classes">
-        <slot name="icon" :size="iconSize" color="black" />
-    </div>
+    <button :class="classes">
+        <slot name="icon" :size="iconSize" />
+
+        <div
+            class="pointer-events-none absolute right-0 top-8 z-20 cursor-default opacity-0 transition-all duration-200 group-focus:pointer-events-auto group-focus:top-10 group-focus:opacity-100"
+        >
+            <slot name="menu" />
+        </div>
+    </button>
 </template>
 
 <style lang="less" scoped></style>

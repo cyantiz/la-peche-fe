@@ -2,9 +2,9 @@
 
 <template>
     <div
-        class="flex w-full cursor-pointer items-center justify-center gap-3 rounded-xl border border-solid border-inactive px-4 py-2 transition-all hover:border-bitter-sweet hover:text-bitter-sweet"
+        class="neu-border-2 neu-shadow-rt-2 hover:neu-shadow-0 flex w-full cursor-pointer items-center justify-center gap-3 rounded border border-solid border-inactive px-4 py-1 transition-all duration-200 hover:-translate-y-[2px] hover:translate-x-[2px]"
     >
-        <IconLogosGoogleIcon class="text-2xl" />
+        <IconLogosGoogleIcon class="text-lg" />
         Sign in with Google Account
     </div>
 </template>

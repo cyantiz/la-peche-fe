@@ -1,7 +1,7 @@
 import { GlobalThemeOverrides } from 'naive-ui'
-import { Color } from './color'
+import { Color } from '../config'
 
-const themeOverrides: GlobalThemeOverrides = {
+const themeBitterSweetOverrides: GlobalThemeOverrides = {
     common: {
         baseColor: Color.AlmostWhite,
         textColorBase: Color.RaisinBlack,
@@ -13,7 +13,7 @@ const themeOverrides: GlobalThemeOverrides = {
         textColor2: Color.RaisinBlack,
         textColor3: Color.RaisinBlack,
         fontFamily: 'Roboto, sans-serif',
-        borderRadius: '8px',
+        borderRadius: '4px',
 
         infoColor: Color.Ocean,
         errorColor: Color.Cherry,
@@ -23,7 +23,7 @@ const themeOverrides: GlobalThemeOverrides = {
     },
     Menu: {
         itemColorActive: Color.BitterSweet,
-        itemColorActiveHover: Color.BitterSweetHover,
+        itemColorActiveHover: Color.BitterSweet,
         itemColorActiveCollapsed: Color.BitterSweet,
         itemIconColorActive: Color.AlmostWhite,
         itemIconColorActiveHover: Color.AlmostWhite,
@@ -98,8 +98,8 @@ const themeOverrides: GlobalThemeOverrides = {
     },
     Alert: {
         border: '2px solid ' + Color.BitterSweet,
-        borderInfo: '2px solid ' + Color.Ocean,
+        borderInfo: '2px solid ' + Color.BitterSweet,
     },
 }
 
-export default themeOverrides
+export default themeBitterSweetOverrides

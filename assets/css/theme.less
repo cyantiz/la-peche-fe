@@ -1,0 +1,63 @@
+@import url('assets/css/colors.less');
+
+html {
+    --theme-primary-color: @color-bittersweet;
+    --theme-primary-color-hover: rgba(@color-bittersweet-hover);
+    --theme-primary-color-pressed: rgba(@color-bittersweet-pressed);
+    --theme-primary-color-dim: rgba(@color-bittersweet, 0.1);
+}
+
+html[theme="Ocean"] {
+    --theme-primary-color: @color-ocean;
+    --theme-primary-color-hover: @color-ocean-hover;
+    --theme-primary-color-pressed: @color-ocean-pressed;
+    --theme-primary-color-dim: rgba(@color-ocean, 0.1);
+}
+
+html[theme="BitterSweet"] {
+    --theme-primary-color: @color-bittersweet;
+    --theme-primary-color-hover: @color-bittersweet-hover;
+    --theme-primary-color-pressed: @color-bittersweet-pressed;
+    --theme-primary-color-dim: rgba(@color-bittersweet, 0.1);
+}
+
+.text-theme {
+    color: var(--theme-primary-color);
+}
+
+.bg-theme-dim {
+    background-color: var(--theme-primary-color-dim);
+}
+
+.bg-theme {
+    background-color: var(--theme-primary-color);
+}
+
+
+.hover {
+    &\:bg-theme:hover {
+        background-color: var(--theme-primary-color);
+    }
+
+    &\:text-theme:hover {
+        color: var(--theme-primary-color);
+    }
+
+    &\:bg-theme-dim:hover {
+        background-color: var(--theme-primary-color-dim);
+    }
+}
+
+.focus {
+    &\:bg-theme:focus {
+        background-color: var(--theme-primary-color);
+    }
+
+    &\:text-theme:focus {
+        color: var(--theme-primary-color);
+    }
+
+    &\:bg-theme-dim:focus {
+        background-color: var(--theme-primary-color-dim);
+    }
+}

@@ -19,7 +19,7 @@
             </ClientOnly>
             <NLayout class="w-full" content-style="width: 100%; padding: 1rem;">
                 <div
-                    class="neu-shadow-lb-4 neu-border-2 h-full w-full overflow-y-scroll rounded-2xl p-4"
+                    class="neu-shadow-lb-4 neu-border-2 bg-theme-dim h-full w-full overflow-y-scroll rounded-lg p-4"
                 >
                     <slot />
                 </div>

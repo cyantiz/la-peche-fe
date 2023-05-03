@@ -19,7 +19,7 @@ defineProps<{
         <!-- Image unavailable -->
         <div
             v-else
-            class="my-profile-image--unavailable neu-border-2 neu-shadow-rt-2 hover:neu-shadow-0 flex h-full w-full cursor-pointer select-none items-center justify-center bg-white transition-all duration-200 hover:-translate-y-[2px] hover:translate-x-[2px] hover:bg-bitter-sweet hover:text-white"
+            class="my-profile-image--unavailable neu-border-2 neu-shadow-rt-2 hover:neu-shadow-0 hover:bg-theme flex h-full w-full cursor-pointer select-none items-center justify-center bg-white transition-all duration-200 hover:-translate-y-[2px] hover:translate-x-[2px] hover:text-white"
         >
             <PhUpload :size="24" weight="bold" />
         </div>
@@ -27,9 +27,9 @@ defineProps<{
         <!-- Delete image button (show when image available) -->
         <div
             v-if="src"
-            class="my-profile-image__delete-btn neu-border-2 neu-shadow-rt-2 hover:neu-shadow-0 absolute right-4 top-4 flex h-8 w-8 cursor-pointer items-center justify-center bg-white transition-all duration-200 hover:-translate-y-[2px] hover:translate-x-[2px] hover:bg-bitter-sweet"
+            class="my-profile-image__delete-btn neu-border-2 neu-shadow-rt-2 hover:neu-shadow-0 absolute right-4 top-4 flex h-8 w-8 cursor-pointer items-center justify-center rounded-sm bg-white text-cherry transition-all duration-200 hover:-translate-y-[2px] hover:translate-x-[2px] hover:bg-cherry hover:text-white"
         >
-            <PhTrash :size="16" weight="bold" />
+            <PhTrash :size="16" weight="fill" />
         </div>
     </div>
 </template>
