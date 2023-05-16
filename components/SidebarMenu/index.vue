@@ -79,12 +79,10 @@ function expandIcon() {
 <template>
     <div class="flex h-full flex-col p-4 pr-0">
         <div
-            class="neu-border-2 neu-shadow-lb-4 bg-theme-dim flex flex-col gap-8 rounded-lg pt-4"
+            class="layout-org flex flex-col gap-8 rounded-lg border-[0.5px] border-solid border-[#E6E8EE] bg-white pt-4"
         >
             <div class="info flex w-full flex-col items-center gap-3">
-                <div
-                    class="neu-border-2 neu-shadow-lb-3 flex overflow-hidden rounded-lg"
-                >
+                <div class="flex overflow-hidden rounded-lg">
                     <Avatar :size="collapsed ? 40 : 192" />
                 </div>
                 <div v-if="!collapsed" class="text">
@@ -132,20 +130,18 @@ function expandIcon() {
 }
 
 .n-menu .n-menu-item-content {
-    transition: all ease-in-out 0.2s;
+    @apply transition-all duration-200;
 
     &::before {
-        .neu-border-2;
         transition: all ease-in-out 0.2s;
     }
 
-    &:not(&--selected):hover,
-    &--selected {
+    &:not(&--selected):hover {
         &::before {
-            .neu-shadow-lb-2;
-            transform: translateX(1px) translateY(-1px);
+            transform: translateY(-2px);
         }
-        transform: translateX(1px) translateY(-1px);
+        transform: translateY(-2px);
+        @apply text-bitter-sweet;
     }
 }
 </style>

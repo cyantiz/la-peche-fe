@@ -21,7 +21,7 @@ module.exports = {
                 'raisin-black': '#221D23',
                 'cafe-noir': '#4F3824',
                 'gold-metallic': '#DDB967',
-                'yellow-green-crayola': '#D0E37F',
+                'green-apple': '#18A058',
                 'almost-white': '#FEFEFE',
                 cherry: '#CA1919',
                 inactive: '#A8AAB9',

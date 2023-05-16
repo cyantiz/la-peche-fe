@@ -11,7 +11,7 @@ defineProps<{
         <!-- Image available -->
         <div
             v-if="src"
-            class="my-profile-image--available neu-border-2 neu-shadow-rt-2 flex h-full w-full overflow-hidden"
+            class="my-profile-image--available flex h-full w-full overflow-hidden rounded-lg"
         >
             <NImage :src="src" object-fit="cover" />
         </div>
@@ -19,15 +19,15 @@ defineProps<{
         <!-- Image unavailable -->
         <div
             v-else
-            class="my-profile-image--unavailable neu-border-2 neu-shadow-rt-2 hover:neu-shadow-0 hover:bg-theme flex h-full w-full cursor-pointer select-none items-center justify-center bg-white transition-all duration-200 hover:-translate-y-[2px] hover:translate-x-[2px] hover:text-white"
+            class="my-profile-image--unavailable flex h-full w-full cursor-pointer select-none items-center justify-center rounded-lg bg-inactive bg-opacity-30 transition-all duration-200 hover:-translate-y-1"
         >
             <PhUpload :size="24" weight="bold" />
         </div>
 
-        <!-- Delete image button (show when image available) -->
+        <!-- Delete button (show when image available) -->
         <div
             v-if="src"
-            class="my-profile-image__delete-btn neu-border-2 neu-shadow-rt-2 hover:neu-shadow-0 absolute right-4 top-4 flex h-8 w-8 cursor-pointer items-center justify-center rounded-sm bg-white text-cherry transition-all duration-200 hover:-translate-y-[2px] hover:translate-x-[2px] hover:bg-cherry hover:text-white"
+            class="my-profile-image__delete-btn neu-border-2 absolute right-4 top-4 flex h-8 w-8 cursor-pointer items-center justify-center rounded-md bg-white text-cherry transition-all hover:-translate-y-0.5 hover:bg-cherry hover:text-white"
         >
             <PhTrash :size="16" weight="fill" />
         </div>

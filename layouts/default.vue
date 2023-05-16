@@ -1,10 +1,14 @@
 <template>
-    <div class="flex w-screen flex-col">
+    <div class="flex w-screen flex-col bg-[#F8FAFF]">
         <LayoutCurtain :show="isShowLayoutCurtain || isAuthLoading" />
         <ClientOnly>
             <Header />
         </ClientOnly>
-        <NLayout has-sider class="body" content-style="width: 100%">
+        <NLayout
+            has-sider
+            class="body mx-auto w-full max-w-[1920px] bg-white bg-opacity-0"
+            content-style="width: 100%;"
+        >
             <ClientOnly>
                 <NLayoutSider
                     v-if="!isMobile"
@@ -13,13 +17,18 @@
                     :collapsed-width="84"
                     :width="258"
                     :collapsed="isCollapsedSidebar"
+                    class="bg-white bg-opacity-0"
+                    content-style="overflow: initial"
                 >
                     <SidebarMenu :collapsed="isCollapsedSidebar" />
                 </NLayoutSider>
             </ClientOnly>
-            <NLayout class="w-full" content-style="width: 100%; padding: 1rem;">
+            <NLayout
+                class="w-full bg-white bg-opacity-0"
+                content-style="width: 100%; padding: 1rem;"
+            >
                 <div
-                    class="neu-shadow-lb-4 neu-border-2 bg-theme-dim h-full w-full overflow-y-scroll rounded-lg p-4"
+                    class="layout-org h-full w-full overflow-y-scroll rounded-lg bg-white p-4"
                 >
                     <slot />
                 </div>
@@ -60,11 +69,7 @@ onMounted(async () => {
     if (!process.client) return
 
     loadingBar.start()
-    await new Promise<void>((resolve) => {
-        setTimeout(() => {
-            resolve()
-        }, 400)
-    })
+    await useDelay(400)
     isShowLayoutCurtain.value = false
 })
 
@@ -75,8 +80,8 @@ router.beforeEach(() => {
 </script>
 
 <style lang="less" scoped>
-@navbar-height-desktop: 72px;
-@navbar-height-mobile: 116px;
+@navbar-height-desktop: 64px;
+@navbar-height-mobile: 108px;
 @breakpoint-mobile: 726px;
 div.body {
     height: calc(100vh - @navbar-height-desktop);

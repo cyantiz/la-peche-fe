@@ -12,7 +12,7 @@ const themeBitterSweetOverrides: GlobalThemeOverrides = {
         textColor1: Color.RaisinBlack,
         textColor2: Color.RaisinBlack,
         textColor3: Color.RaisinBlack,
-        fontFamily: 'Roboto, sans-serif',
+        fontFamily: 'Whyte, Roboto, sans-serif',
         borderRadius: '4px',
 
         infoColor: Color.Ocean,
@@ -32,74 +32,110 @@ const themeBitterSweetOverrides: GlobalThemeOverrides = {
         itemColorHover: Color.AlmostWhite,
     },
     Button: {
-        border: '2px solid #000000',
-        borderHover: '2px solid #000000',
-        borderPressed: '2px solid #000000',
-        borderFocus: '2px solid #000000',
-        borderDisabled: '2px solid #000000',
+        color: Color.RaisinBlack,
+        colorHover: Color.RaisinBlack,
+        colorPressed: Color.RaisinBlack,
+        colorFocus: Color.RaisinBlack,
+        textColor: Color.AlmostWhite,
+        textColorHover: Color.AlmostWhite,
+        textColorFocus: Color.AlmostWhite,
+        textColorPressed: Color.AlmostWhite,
+        border: '3px solid black',
+        borderHover: '3px solid black',
+        borderPressed: '3px solid black',
+        borderFocus: '3px solid black',
 
-        // primary
-        borderPrimary: '2px solid #000000',
-        borderHoverPrimary: '2px solid #000000',
-        borderFocusPrimary: '2px solid #000000',
-        borderPressedPrimary: '2px solid #000000',
-        borderDisabledPrimary: '2px solid #000000',
+        textColorGhost: Color.RaisinBlack,
+        textColorGhostHover: Color.RaisinBlack,
+        textColorGhostFocus: Color.RaisinBlack,
+        textColorGhostPressed: Color.RaisinBlack,
 
-        // success
-        borderSuccess: '2px solid #000000',
-        borderHoverSuccess: '2px solid #000000',
-        borderFocusSuccess: '2px solid #000000',
-        borderPressedSuccess: '2px solid #000000',
-        borderDisabledSuccess: '2px solid #000000',
+        colorDisabled: Color.RaisinBlack,
+        textColorDisabled: Color.AlmostWhite,
+        opacityDisabled: '0.9',
 
-        // error
-        borderError: '2px solid #000000',
-        borderHoverError: '2px solid #000000',
-        borderFocusError: '2px solid #000000',
-        borderPressedError: '2px solid #000000',
-        borderDisabledError: '2px solid #000000',
+        colorPrimary: Color.BitterSweet,
+        colorHoverPrimary: Color.BitterSweet,
+        colorPressedPrimary: Color.BitterSweetHover,
+        colorFocusPrimary: Color.BitterSweet,
 
-        // warning
-        borderWarning: '2px solid #000000',
-        borderHoverWarning: '2px solid #000000',
-        borderFocusWarning: '2px solid #000000',
-        borderPressedWarning: '2px solid #000000',
-        borderDisabledWarning: '2px solid #000000',
+        colorInfo: Color.Ocean,
+        colorHoverInfo: Color.Ocean,
+        colorPressedInfo: Color.OceanHover,
+        colorFocusInfo: Color.Ocean,
 
-        // info
-        borderInfo: '2px solid #000000',
-        borderHoverInfo: '2px solid #000000',
-        borderFocusInfo: '2px solid #000000',
-        borderPressedInfo: '2px solid #000000',
-        borderDisabledInfo: '2px solid #000000',
+        colorSuccess: Color.GreenApple,
+        colorHoverSuccess: Color.GreenApple,
+        colorPressedSuccess: Color.GreenApple,
+        colorFocusSuccess: Color.GreenApple,
 
-        // border radius:
-        // ...
+        heightLarge: '48px',
+        fontSizeLarge: '1.125rem',
+        paddingLarge: '0 20px',
+        borderRadiusLarge: '10px',
+
+        heightMedium: '40px',
+        paddingMedium: '0 16px',
+        fontSizeMedium: '1rem',
+        borderRadiusMedium: '8px',
+
+        heightSmall: '32px',
+        fontSizeSmall: '0.875rem',
+        paddingSmall: '0 12px',
+        borderRadiusSmall: '6px',
+
+        heightTiny: '24px',
+        fontSizeTiny: '0.75rem',
+        paddingTiny: '0 8px',
+        borderRadiusTiny: '4px',
+
+        fontWeight: '700',
     },
-    Input: {
-        border: '2px solid #000000',
-        borderHover: '2px solid ' + Color.BitterSweet,
-        borderFocus: '2px solid ' + Color.BitterSweet,
-        borderError: '2px solid ' + Color.Cherry,
-        borderHoverError: '2px solid ' + Color.Cherry,
-        borderFocusError: '2px solid ' + Color.Cherry,
-        borderDisabled: '2px solid ' + Color.Inactive,
-        borderWarning: '2px solid ' + Color.YellowGreenCrayola,
-        borderHoverWarning: '2px solid ' + Color.YellowGreenCrayola,
-        borderFocusWarning: '2px solid ' + Color.YellowGreenCrayola,
 
-        boxShadowFocusError: '2px -2px 0 0 ' + Color.Cherry,
-        boxShadowFocusWarning: '2px -2px 0 0 ' + Color.YellowGreenCrayola,
-        boxShadowFocus: '2px -2px 0 0 ' + Color.BitterSweet,
+    Form: {
+        feedbackFontSizeLarge: '1rem',
+        feedbackFontSizeMedium: '0.925rem',
+        feedbackFontSizeSmall: '0.875rem',
+    },
+
+    Input: {
+        borderRadius: '5px',
+
+        heightLarge: '50px',
+        paddingLarge: '0 6px 0 12px',
+        fontSizeLarge: '1rem',
+
+        heightMedium: '40px',
+        fontSizeMedium: '0.925rem',
+
+        heightSmall: '32px',
+        fontSizeSmall: '0.875rem',
+
+        heightTiny: '24px',
+        fontSizeTiny: '0.75rem',
+
+        border: '3px solid #000000',
+        borderHover: '3px solid ' + Color.BitterSweet,
+        borderFocus: '3px solid ' + Color.BitterSweet,
+        borderError: '3px solid ' + Color.Cherry,
+        borderHoverError: '3px solid ' + Color.Cherry,
+        borderFocusError: '3px solid ' + Color.Cherry,
+        borderDisabled: '3px solid ' + Color.Inactive,
+        borderWarning: '3px solid ' + Color.GreenApple,
+        borderHoverWarning: '3px solid ' + Color.GreenApple,
+        borderFocusWarning: '3px solid ' + Color.GreenApple,
+    },
+    Alert: {
+        border: '1px solid ' + Color.BitterSweet,
+        borderInfo: '1px solid ' + Color.Ocean,
+        borderWarning: '1px solid ' + Color.GreenApple,
+        iconColorInfo: Color.Ocean,
     },
     Dialog: {
         borderRadius: '16px',
         closeColorHover: 'rgba(0, 0, 0, 0)',
     },
-    Alert: {
-        border: '2px solid ' + Color.BitterSweet,
-        borderInfo: '2px solid ' + Color.BitterSweet,
-    },
+    Modal: {},
 }
 
 export default themeBitterSweetOverrides

@@ -2,10 +2,10 @@
 
 <template>
     <div
-        class="neu-border-2 neu-shadow-rt-2 hover:neu-shadow-0 flex w-full cursor-pointer items-center justify-center gap-3 rounded border border-solid border-inactive px-4 py-1 transition-all duration-200 hover:-translate-y-[2px] hover:translate-x-[2px]"
+        class="neu-border-3 flex w-full cursor-pointer items-center justify-center gap-3 rounded-lg border border-solid border-inactive px-4 py-3 text-base font-bold transition-all duration-200 hover:-translate-y-[2px]"
     >
         <IconLogosGoogleIcon class="text-lg" />
-        Sign in with Google Account
+        Continue with Google
     </div>
 </template>
 

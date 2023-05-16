@@ -14,7 +14,7 @@ defineProps<{
         }"
     >
         <div
-            class="flex h-full w-full items-center justify-center bg-bitter-sweet bg-opacity-10"
+            class="flex h-full w-full items-center justify-center bg-opacity-10"
         >
             <Logo size="lg" is-with-text :can-navigate="false" />
         </div>

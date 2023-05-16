@@ -1,36 +1,63 @@
 @import url('assets/css/colors.less');
 
+html[theme="BitterSweet"],
 html {
     --theme-primary-color: @color-bittersweet;
-    --theme-primary-color-hover: rgba(@color-bittersweet-hover);
-    --theme-primary-color-pressed: rgba(@color-bittersweet-pressed);
-    --theme-primary-color-dim: rgba(@color-bittersweet, 0.1);
+    --theme-primary-color-hover: @color-bittersweet-hover;
+    --theme-primary-color-pressed: @color-bittersweet-pressed;
+    --theme-primary-color-dim-1: rgba(@color-bittersweet, 0.1);
+    --theme-primary-color-dim-2: rgba(@color-bittersweet, 0.2);
 }
 
 html[theme="Ocean"] {
     --theme-primary-color: @color-ocean;
     --theme-primary-color-hover: @color-ocean-hover;
     --theme-primary-color-pressed: @color-ocean-pressed;
-    --theme-primary-color-dim: rgba(@color-ocean, 0.1);
+    --theme-primary-color-dim-1: rgba(@color-ocean, 0.1);
+    --theme-primary-color-dim-2: rgba(@color-ocean, 0.2);
 }
 
-html[theme="BitterSweet"] {
-    --theme-primary-color: @color-bittersweet;
-    --theme-primary-color-hover: @color-bittersweet-hover;
-    --theme-primary-color-pressed: @color-bittersweet-pressed;
-    --theme-primary-color-dim: rgba(@color-bittersweet, 0.1);
+.layout-org {
+    box-shadow: 0 0 12px 0px rgba(0, 0, 0, 0.15);
+
+    position: relative;
+    z-index: 2;
 }
 
 .text-theme {
     color: var(--theme-primary-color);
 }
 
-.bg-theme-dim {
-    background-color: var(--theme-primary-color-dim);
+.bg-theme-dim-1 {
+    background-color: var(--theme-primary-color-dim-1);
+}
+
+.bg-theme-dim-2 {
+    background-color: var(--theme-primary-color-dim-2);
 }
 
 .bg-theme {
     background-color: var(--theme-primary-color);
+}
+
+.border-theme {
+    border-color: var(--theme-primary-color);
+}
+
+.border-b-theme {
+    border-bottom-color: var(--theme-primary-color);
+}
+
+.border-l-theme {
+    border-left-color: var(--theme-primary-color);
+}
+
+.border-t-theme {
+    border-top-color: var(--theme-primary-color);
+}
+
+.border-r-theme {
+    border-right-color: var(--theme-primary-color);
 }
 
 
@@ -46,6 +73,28 @@ html[theme="BitterSweet"] {
     &\:bg-theme-dim:hover {
         background-color: var(--theme-primary-color-dim);
     }
+
+    &\:border-theme:hover {
+        border-color: var(--theme-primary-color);
+    }
+
+    &\:border-b-theme:hover {
+        border-bottom-color: var(--theme-primary-color);
+    }
+
+    &\:border-l-theme:hover {
+        border-left-color: var(--theme-primary-color);
+    }
+
+    &\:border-t-theme:hover {
+        border-top-color: var(--theme-primary-color);
+    }
+
+    &\:border-r-theme:hover {
+        border-right-color: var(--theme-primary-color);
+    }
+
+
 }
 
 .focus {

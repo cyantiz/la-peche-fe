@@ -1,42 +1,56 @@
 @import url('assets/css/tailwind.css');
 @import url('assets/css/colors.less');
 @import url('assets/css/neu_brutalism.less');
-
 @import url('assets/css/theme.less');
+@import url('assets/css/fonts.less');
 
 html,
 body {
     @apply text-raisin-black;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Whyte', sans-serif !important;
 }
 
-.n-modal.n-dialog {
-    .neu-border-4;
-    .neu-shadow-rt-4;
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
+
 
 .n-button {
     transition: all ease .2s;
 
-    .neu-shadow-rt-2;
-
-    &:active,
-    &:focus,
     &:hover {
-        box-shadow: none;
-        transform: translate(2px, -2px);
+        transform: translateY(-2px);
     }
 }
 
-.n-input {
-    transition: all ease .3s;
+.link-underline {
+    text-decoration: none;
+    cursor: pointer;
+    text-underline-offset: 0.25em;
+    background-color: transparent;
+    position: relative;
 
-    &--focus {
-        transform: translate(-2px, 2px);
+    &::after {
+        content: "";
+        opacity: 0;
+        transform: translateY(3px) scaleY(0);
+        transition: transform 250ms ease 0s, opacity 250ms ease 0s;
+        transform-origin: left center 0px;
     }
 
-    .n-input__border,
-    .n-input__state-border {
-        transition: all ease .3s;
+
+    &:hover::after {
+        content: "";
+        position: absolute;
+        left: 1px;
+        right: 1px;
+        bottom: 0px;
+        height: 3px;
+        background: currentcolor;
+        opacity: 1;
+        transform: translateY(0px) scaleY(1);
     }
 }

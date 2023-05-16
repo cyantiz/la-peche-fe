@@ -9,8 +9,6 @@ definePageMeta({
 })
 
 const auth = useAuthStore()
-const user = computed(() => auth.user)
-
 const loadingBar = useLoadingBar()
 onMounted(() => {
     if (!process.client) return
@@ -20,9 +18,8 @@ onMounted(() => {
 
 <template>
     <div v-if="auth.loading">auth loading</div>
-    <div v-else>
-        logged with user: {{ user }}
-        <button @click="auth.logout">logout</button>
+    <div>
+        <DatingInformationCard />
     </div>
 </template>
 

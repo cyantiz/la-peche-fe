@@ -5,9 +5,8 @@ import {
     NDialogProvider,
     NNotificationProvider,
 } from 'naive-ui'
-import BitterSweet from './naive-ui-global-override/BitterSweetTheme'
-import OceanTheme from './naive-ui-global-override/OceanTheme'
 import { ThemeOption } from './config'
+import { getTheme } from './utils'
 import { useUIStore } from '~/store/ui'
 
 const UI = useUIStore()
@@ -17,16 +16,18 @@ const theme = useColorMode({
     modes: ThemeOption,
 })
 
-const themeOverride = computed(() => {
-    switch (theme.value) {
-        case ThemeOption.Ocean:
-            return OceanTheme
-        case ThemeOption.BitterSweet:
-            return BitterSweet
-        default:
-            return BitterSweet
+const themeCookie = useCookie<ThemeOption>('theme')
+
+const themeOverride = ref(getTheme(themeCookie.value))
+
+// have to store theme in cookie because of ssr
+watch(
+    () => theme.value,
+    (newTheme) => {
+        themeCookie.value = newTheme as ThemeOption
+        themeOverride.value = getTheme(newTheme as ThemeOption)
     }
-})
+)
 </script>
 
 <template>

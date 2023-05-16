@@ -5,7 +5,9 @@
             <div
                 class="flex h-full w-full max-w-[512px] flex-col gap-4 self-start px-8 py-6 lg:w-[512px]"
             >
-                <Logo is-with-text />
+                <div class="bg-white">
+                    <Logo is-with-text />
+                </div>
                 <div class="flex h-full w-full flex-col justify-center">
                     <slot />
                 </div>
@@ -34,11 +36,7 @@ onMounted(async () => {
     if (!process.client) return
 
     loadingBar.start()
-    await new Promise<void>((resolve) => {
-        setTimeout(() => {
-            resolve()
-        }, 400)
-    })
+    await useDelay(400)
     isShowLayoutCurtain.value = false
     loadingBar.finish()
 })

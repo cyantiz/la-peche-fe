@@ -14,50 +14,48 @@ const isMobile = breakPoints.smallerOrEqual('md')
 </script>
 
 <template>
-    <header class="z-10 flex w-full flex-col px-4 pt-2">
+    <header class="z-10 mx-auto flex w-full max-w-[1920px] flex-col px-4 pt-2">
         <div
-            class="neu-border-2 neu-shadow-lb-4 bg-theme-dim flex w-full flex-col gap-1 rounded-lg px-4 py-1.5"
+            class="layout-org flex w-full flex-col gap-1 rounded-lg bg-white px-4 py-2"
         >
             <div class="flex h-full w-full justify-between">
                 <Logo size="sm" is-with-text />
+
                 <div v-if="!isMobile" class="header-right--desktop flex gap-9">
                     <div class="flex items-center gap-4">
-                        <HeaderItemTriggerMenuButton
-                            size="small"
-                            shape="rounded-square"
-                        >
-                            <template #icon="{ size }">
-                                <PhBellSimple :size="size" weight="bold" />
+                        <HeaderItemTriggerMenuButton size="small">
+                            <template #button>
+                                <PhBellSimple :size="18" weight="bold" />
                             </template>
-
                             <template #menu>
                                 <NotificationMenu />
                             </template>
                         </HeaderItemTriggerMenuButton>
 
-                        <HeaderItemTriggerMenuButton
-                            size="small"
-                            shape="rounded-square"
-                        >
-                            <template #icon="{ size }">
-                                <PhPaintBrushBroad :size="size" weight="bold" />
+                        <HeaderItemTriggerMenuButton>
+                            <template #button>
+                                <PhPaintBrushBroad :size="18" weight="bold" />
                             </template>
-
                             <template #menu>
                                 <ThemeOptionMenu />
                             </template>
                         </HeaderItemTriggerMenuButton>
+                        <div
+                            class="divider mx-4 h-3/4 w-[2px] rounded-xl bg-black"
+                        ></div>
+                        <HeaderItemTriggerMenuButton>
+                            <template #button>
+                                <div class="flex overflow-hidden">
+                                    <Avatar :size="36" />
+                                </div>
+                            </template>
+                            <template #menu>
+                                <HeaderAvatarMenu />
+                            </template>
+                        </HeaderItemTriggerMenuButton>
                     </div>
-                    <div class="divider my-2 w-[2px] rounded-xl bg-black"></div>
-                    <button
-                        class="neu-border-2 neu-shadow-lb-2 focus:neu-shadow-0 flex overflow-hidden rounded-xl p-0 transition-all duration-200 focus:-translate-x-[1px] focus:translate-y-[1px]"
-                    >
-                        <Avatar
-                            src="https://i1-giaitri.vnecdn.net/2013/04/06/cobain00-jpg-1365215535.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=N1btuexChzpWLU0036GHsg"
-                            :size="40"
-                        />
-                    </button>
                 </div>
+
                 <div v-if="isMobile" class="header-right--mobile">
                     <HeaderItem
                         size="tiny"
@@ -74,6 +72,7 @@ const isMobile = breakPoints.smallerOrEqual('md')
                     </HeaderItem>
                 </div>
             </div>
+
             <Navbar v-if="isMobile" />
         </div>
     </header>

@@ -14,10 +14,11 @@ export enum Color {
 
     /*****************************/
     GoldMetallic = '#DDB967',
-    YellowGreenCrayola = '#D0E37F',
+    GreenApple = '#18A058',
     AlmostWhite = '#FEFEFE',
     Cherry = '#CA1919',
     Inactive = '#A8AAB9',
+    InactiveBase = '#F8FAFB',
 }
 
 export enum ThemeOption {

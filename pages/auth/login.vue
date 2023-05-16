@@ -87,9 +87,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div
-        class="space-between neu-border-2 neu-shadow-rt-4 flex flex-col rounded-xl px-4 py-12"
-    >
+    <div class="space-between neu-border-3 flex flex-col rounded-xl px-6 py-12">
         <div>
             <div class="mb-6 text-4xl font-bold">Welcome back!</div>
             <NForm
@@ -97,16 +95,29 @@ onMounted(() => {
                 :model="form"
                 :rules="loginFormRules"
                 label-position="top"
+                class="flex flex-col gap-0.5"
+                auto-complete="false"
                 @submit.prevent="submitForm"
             >
-                <NFormItem label="Username" path="username" required>
+                <NFormItem
+                    size="large"
+                    :show-label="false"
+                    path="username"
+                    required
+                >
                     <NInput
                         v-model:value="form.username"
+                        auto-complete="false"
                         placeholder="@username"
                         @keydown.enter.prevent
                     />
                 </NFormItem>
-                <NFormItem label="Password" path="password" required>
+                <NFormItem
+                    size="large"
+                    :show-label="false"
+                    path="password"
+                    required
+                >
                     <NInput
                         v-model:value="form.password"
                         type="password"
@@ -116,8 +127,10 @@ onMounted(() => {
                 </NFormItem>
                 <NButton
                     :loading="pending"
-                    type="primary"
+                    :disabled="pending"
+                    type="default"
                     attr-type="submit"
+                    size="large"
                     block
                     >Login</NButton
                 >
@@ -127,10 +140,11 @@ onMounted(() => {
         </div>
 
         <div class="mt-12 flex flex-col items-center gap-1">
-            <span> Don't have an account yet? </span>
+            <span class="text-base"> Don't have an account yet? </span>
             <NButton
                 type="success"
                 block
+                size="large"
                 @click="$router.push('/auth/register')"
             >
                 Register now

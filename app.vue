@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ThemeOption } from './theme/config'
-import ThemeProvider from './theme/index.vue'
+import ThemeProvider from './theme/ThemeProvider.vue'
 defineProps<{}>()
 
 useColorMode({

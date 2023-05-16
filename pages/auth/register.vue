@@ -94,12 +94,6 @@ onMounted(() => {
                     your
                     <span class="text-bitter-sweet"> matches </span>
                 </div>
-                <div class="text-sm font-normal">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec sollicitudin nunc sagittis pulvinar luctus. Proin
-                    accumsan venenatis tempor. Ut lectus mauris, suscipit eu
-                    dictum sed, feugiat id velit.
-                </div>
             </div>
             <NForm
                 ref="formRef"
@@ -141,6 +135,12 @@ onMounted(() => {
                     >Register</NButton
                 >
             </NForm>
+            <div class="mt-4 w-full text-base">
+                Already have an account?
+                <NuxtLink to="/auth/login" class="link-underline"
+                    >Back to login</NuxtLink
+                >
+            </div>
         </div>
     </div>
 </template>

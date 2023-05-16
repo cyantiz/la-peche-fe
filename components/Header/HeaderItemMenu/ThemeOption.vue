@@ -16,10 +16,10 @@ const cssProps = computed(() => {
 
 <template>
     <div
-        class="theme-option neu-border-2 flex w-32 cursor-pointer flex-col items-center justify-center gap-2 rounded py-2 font-bold transition-all duration-200"
+        class="theme-option neu-border-2 flex w-32 cursor-pointer flex-col items-center justify-center gap-2 py-2 font-bold transition-all duration-200"
         :class="{
-            'theme-option--active -translate-x-[3px] translate-y-[3px]': active,
-            'theme-option--inactive neu-shadow-lb-3': !active,
+            'theme-option--active': active,
+            'theme-option--inactive': !active,
         }"
         :style="cssProps"
     >
@@ -40,6 +40,7 @@ const cssProps = computed(() => {
         color: var(--theme-option-color);
 
         &:hover {
+            @apply -translate-y-1;
             background: var(--theme-option-color);
             color: var(--text-color);
         }

@@ -14,7 +14,7 @@ const setTheme = (option: ThemeOption) => {
 </script>
 
 <template>
-    <div class="neu-border-2 neu-shadow-lb-2 flex gap-2 rounded bg-white p-4">
+    <div class="neu-border-2 flex gap-2 bg-white p-4">
         <ThemeOptionVue
             :active="theme === ThemeOption.Ocean"
             text="Ocean"
