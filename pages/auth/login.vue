@@ -87,69 +87,68 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="space-between neu-border-3 flex flex-col rounded-xl px-6 py-12">
-        <div>
-            <div class="mb-6 text-4xl font-bold">Welcome back!</div>
-            <NForm
-                ref="formRef"
-                :model="form"
-                :rules="loginFormRules"
-                label-position="top"
-                class="flex flex-col gap-0.5"
-                @submit.prevent="submitForm"
-            >
-                <NFormItem
-                    size="large"
-                    :show-label="false"
-                    path="username"
-                    required
-                >
-                    <NInput
-                        v-model:value="form.username"
-                        placeholder="@username"
-                        :input-props="{ autocomplete: 'off' }"
-                        @keydown.enter.prevent
-                    />
-                </NFormItem>
-                <NFormItem
-                    size="large"
-                    :show-label="false"
-                    path="password"
-                    required
-                >
-                    <NInput
-                        v-model:value="form.password"
-                        type="password"
-                        placeholder="∗∗∗∗∗∗"
-                        :input-props="{ autocomplete: 'off' }"
-                        @keydown.enter.prevent
-                    />
-                </NFormItem>
-                <NButton
-                    :loading="pending"
-                    :disabled="pending"
-                    type="default"
-                    attr-type="submit"
-                    size="large"
-                    block
-                    >Login</NButton
-                >
-            </NForm>
-            <NDivider> Or </NDivider>
-            <LoginWithGoogleButton @click="loginWithGoogle" />
-        </div>
-
-        <div class="mt-12 flex flex-col items-center gap-1">
-            <span class="text-base"> Don't have an account yet? </span>
-            <NButton
-                type="success"
-                block
+    <div>
+        <div class="mb-6 text-2xl font-bold lg:text-4xl">Welcome back!</div>
+        <NForm
+            ref="formRef"
+            :model="form"
+            :rules="loginFormRules"
+            label-position="top"
+            class="flex flex-col gap-0.5"
+            @submit.prevent="submitForm"
+            @keydown.enter.prevent="submitForm"
+        >
+            <NFormItem
                 size="large"
-                @click="$router.push('/auth/register')"
+                :show-label="false"
+                path="username"
+                required
             >
-                Register now
-            </NButton>
-        </div>
+                <NInput
+                    v-model:value="form.username"
+                    placeholder="@username"
+                    :input-props="{ autocomplete: 'off' }"
+                    @keydown.enter.prevent
+                />
+            </NFormItem>
+            <NFormItem
+                size="large"
+                :show-label="false"
+                path="password"
+                required
+            >
+                <NInput
+                    v-model:value="form.password"
+                    type="password"
+                    placeholder="∗∗∗∗∗∗"
+                    :input-props="{ autocomplete: 'off' }"
+                    @keydown.enter.prevent
+                />
+            </NFormItem>
+            <NButton
+                :loading="pending"
+                :disabled="pending"
+                type="default"
+                attr-type="submit"
+                size="large"
+                block
+                >Login</NButton
+            >
+        </NForm>
+        <NDivider> Or </NDivider>
+        <LoginWithGoogleButton @click="loginWithGoogle" />
+    </div>
+
+    <div class="mt-6 flex flex-col items-center gap-1 md:mt-12">
+        <span class="text-base"> Don't have an account yet? </span>
+        <NButton
+            type="success"
+            block
+            size="large"
+            @click="$router.push('/auth/register')"
+        >
+            Register now
+        </NButton>
     </div>
 </template>
 

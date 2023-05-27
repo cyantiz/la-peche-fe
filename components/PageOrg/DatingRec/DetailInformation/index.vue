@@ -3,30 +3,23 @@ import { NModal, NCard } from 'naive-ui'
 import { useBreakpoints, breakpointsTailwind } from '@vueuse/core'
 
 defineProps<{
-    images: IImage[]
-    info: IUserInformation
+    images: IImage[] | null
+    info: IUserInformation | null
     show: boolean
 }>()
 
 defineEmits(['close'])
 
-const pending = ref(true)
-
 const breakPoints = useBreakpoints(breakpointsTailwind)
 const lg = breakPoints.smallerOrEqual('lg')
 const sm = breakPoints.smallerOrEqual('sm')
-
-onMounted(async () => {
-    await useDelay(1000)
-    pending.value = false
-})
 </script>
 
 <template>
     <NModal
         :show="show"
         transform-origin="center"
-        :mask-closable="false"
+        :mask-closable="true"
         @close="$emit('close')"
     >
         <NCard
@@ -42,17 +35,18 @@ onMounted(async () => {
             @close="$emit('close')"
         >
             <div class="flex h-full flex-col gap-8 overflow-scroll lg:flex-row">
-                <PageOrgDatingRecDetailImageSkeleton v-show="pending" />
+                <PageOrgDatingRecDetailImageSkeleton v-show="!images" />
+
                 <PageOrgDatingRecDetailImage
-                    v-show="!pending"
+                    v-if="images"
                     :images="images"
                     :slides-per-view="sm ? 1 : lg ? 2 : 1"
                 />
 
                 <ClientOnly>
-                    <PageOrgDatingRecDetailTextSkeleton v-show="pending" />
+                    <PageOrgDatingRecDetailTextSkeleton v-show="!info" />
                     <PageOrgDatingRecDetailTextAndAction
-                        v-show="!pending"
+                        v-if="info"
                         :info="info"
                     />
                 </ClientOnly>

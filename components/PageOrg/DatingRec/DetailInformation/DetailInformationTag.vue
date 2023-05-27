@@ -10,7 +10,10 @@ defineProps<{
         class="hover:border-theme hover:text-theme inline-flex select-none items-center gap-2 rounded-full border border-solid border-inactive px-2 py-1 text-base transition-all duration-200"
     >
         <component :is="icon" :size="20" />
-        {{ text }}
+        {{
+            String(text)?.toString().charAt(0).toUpperCase() +
+            text?.toString().slice(1)
+        }}
     </div>
 </template>
 

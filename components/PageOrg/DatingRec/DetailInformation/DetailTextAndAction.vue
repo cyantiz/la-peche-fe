@@ -62,7 +62,7 @@ const age = computed(() => {
                     <PageOrgDatingRecDetailInformationTag
                         v-show="info?.height"
                         :icon="PhRuler"
-                        :text="info?.height"
+                        :text="info?.height + ' cm'"
                     />
                 </div>
             </div>

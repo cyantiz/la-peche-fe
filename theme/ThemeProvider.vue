@@ -34,7 +34,10 @@ watch(
     <NConfigProvider :theme-overrides="themeOverride">
         <NDialogProvider>
             <NLoadingBarProvider>
-                <NNotificationProvider :placement="UI.notificationPlacement">
+                <NNotificationProvider
+                    :placement="UI.notificationPlacement"
+                    :max="5"
+                >
                     <slot />
                 </NNotificationProvider>
             </NLoadingBarProvider>

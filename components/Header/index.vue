@@ -14,7 +14,9 @@ const isMobile = breakPoints.smallerOrEqual('md')
 </script>
 
 <template>
-    <header class="z-10 mx-auto flex w-full max-w-[1920px] flex-col px-4 pt-2">
+    <header
+        class="z-10 mx-auto flex w-full max-w-[1920px] flex-col md:px-4 md:pt-2"
+    >
         <div
             class="layout-org flex w-full flex-col gap-1 rounded-lg bg-white px-4 py-2"
         >

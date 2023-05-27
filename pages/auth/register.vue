@@ -84,63 +84,59 @@ onMounted(() => {
 </script>
 
 <template>
-    <div
-        class="space-between neu-border-2 neu-shadow-rt-4 flex flex-col rounded-xl px-4 py-12"
-    >
-        <div>
-            <div class="quote mb-6 flex flex-col gap-2">
-                <div class="text-4xl font-bold">
-                    Start to find <br />
-                    your
-                    <span class="text-bitter-sweet"> matches </span>
-                </div>
+    <div>
+        <div class="quote mb-6 flex flex-col gap-2">
+            <div class="text-4xl font-bold">
+                Start to find <br />
+                your
+                <span class="text-bitter-sweet"> matches </span>
             </div>
-            <NForm
-                ref="formRef"
-                :model="form"
-                :rules="registerFormRules"
-                label-position="top"
-                @submit.prevent="submitForm"
+        </div>
+        <NForm
+            ref="formRef"
+            :model="form"
+            :rules="registerFormRules"
+            label-position="top"
+            @submit.prevent="submitForm"
+        >
+            <NFormItem label="Email" path="email" required>
+                <NInput
+                    v-model:value="form.email"
+                    placeholder="email@domain.com"
+                    @keydown.enter.prevent
+                />
+            </NFormItem>
+            <NFormItem label="Full name" path="name" required>
+                <NInput
+                    v-model:value="form.name"
+                    placeholder="John Doe"
+                    @keydown.enter.prevent
+                />
+            </NFormItem>
+            <NFormItem label="Username" path="username" required>
+                <NInput
+                    v-model:value="form.username"
+                    placeholder="@username"
+                    @keydown.enter.prevent
+                />
+            </NFormItem>
+            <NFormItem label="Password" path="password" required>
+                <NInput
+                    v-model:value="form.password"
+                    type="password"
+                    placeholder="∗∗∗∗∗∗"
+                    @keydown.enter.prevent
+                />
+            </NFormItem>
+            <NButton :loading="pending" type="primary" attr-type="submit"
+                >Register</NButton
             >
-                <NFormItem label="Email" path="email" required>
-                    <NInput
-                        v-model:value="form.email"
-                        placeholder="email@domain.com"
-                        @keydown.enter.prevent
-                    />
-                </NFormItem>
-                <NFormItem label="Full name" path="name" required>
-                    <NInput
-                        v-model:value="form.name"
-                        placeholder="John Doe"
-                        @keydown.enter.prevent
-                    />
-                </NFormItem>
-                <NFormItem label="Username" path="username" required>
-                    <NInput
-                        v-model:value="form.username"
-                        placeholder="@username"
-                        @keydown.enter.prevent
-                    />
-                </NFormItem>
-                <NFormItem label="Password" path="password" required>
-                    <NInput
-                        v-model:value="form.password"
-                        type="password"
-                        placeholder="∗∗∗∗∗∗"
-                        @keydown.enter.prevent
-                    />
-                </NFormItem>
-                <NButton :loading="pending" type="primary" attr-type="submit"
-                    >Register</NButton
-                >
-            </NForm>
-            <div class="mt-4 w-full text-base">
-                Already have an account?
-                <NuxtLink to="/auth/login" class="link-underline"
-                    >Back to login</NuxtLink
-                >
-            </div>
+        </NForm>
+        <div class="mt-4 w-full text-base">
+            Already have an account?
+            <NuxtLink to="/auth/login" class="link-underline"
+                >Back to login</NuxtLink
+            >
         </div>
     </div>
 </template>

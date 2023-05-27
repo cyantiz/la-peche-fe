@@ -68,7 +68,7 @@ const textSize = computed(() => TEXT_SIZES[props.size])
 
 <style lang="less" scoped>
 .text {
-    font-family: 'Montserrat', 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     user-select: none;
 }
 </style>

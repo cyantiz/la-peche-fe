@@ -12,7 +12,7 @@ module.exports = {
     },
     theme: {
         fontFamily: {
-            sans: ['Roboto', 'sans-serif'],
+            sans: ['Whyte', 'Montserrat', 'Roboto', 'sans-serif'],
             serif: ['Playfair Display', 'serif'],
         },
         extend: {

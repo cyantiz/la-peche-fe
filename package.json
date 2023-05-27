@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "build": "ENV=dev nuxt build",
-        "dev": "ENV=dev nuxt dev --port 5173",
+        "dev": "ENV=dev nuxt dev --port 1203",
         "generate": "env=dev nuxt generate",
         "preview": "nuxt preview",
         "postinstall": "nuxt prepare",

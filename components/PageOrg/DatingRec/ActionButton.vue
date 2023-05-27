@@ -18,21 +18,21 @@ withDefaults(
         class="like-btn cursor-pointer rounded-full bg-bitter-sweet p-3 leading-[0] transition-all duration-200 hover:-translate-y-0.5"
         :class="{ _shadow: shadow }"
     >
-        <PhHeart size="32" weight="fill" color="white" />
+        <PhHeart size="24" weight="fill" color="white" />
     </div>
     <div
         v-if="type === 'dislike'"
         class="dislike-btn cursor-pointer rounded-full bg-gold-metallic p-3 leading-[0] transition-all duration-200 hover:-translate-y-0.5"
         :class="{ _shadow: shadow }"
     >
-        <PhX size="32" weight="bold" color="white" />
+        <PhX size="24" weight="bold" color="white" />
     </div>
     <div
         v-if="type === 'star'"
         class="cursor-pointer rounded-full p-3 leading-[0] text-green-apple transition-all duration-200 hover:-translate-y-0.5 hover:bg-green-apple hover:text-white"
     >
         <PhStar
-            size="32"
+            size="24"
             weight="fill"
             class="star-btn"
             :class="{ _shadow: shadow }"

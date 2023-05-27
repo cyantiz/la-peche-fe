@@ -1,5 +1,5 @@
 <template>
-    <div class="flex h-screen w-screen justify-center">
+    <div class="flex w-screen justify-center lg:h-screen">
         <LayoutCurtain :show="isShowLayoutCurtain" />
         <div class="flex w-full justify-center lg:w-auto">
             <div
@@ -9,7 +9,11 @@
                     <Logo is-with-text />
                 </div>
                 <div class="flex h-full w-full flex-col justify-center">
-                    <slot />
+                    <div
+                        class="space-between flex flex-col rounded-xl px-6 py-12 lg:border-[3px] lg:border-solid lg:border-black"
+                    >
+                        <slot />
+                    </div>
                 </div>
             </div>
         </div>

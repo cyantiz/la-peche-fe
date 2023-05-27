@@ -25,12 +25,14 @@
             </ClientOnly>
             <NLayout
                 class="w-full bg-white bg-opacity-0"
-                content-style="width: 100%; padding: 1rem;"
+                content-style="width: 100%;"
             >
-                <div
-                    class="layout-org h-full w-full overflow-y-scroll rounded-lg bg-white p-4"
-                >
-                    <slot />
+                <div class="h-full w-full md:p-4">
+                    <div
+                        class="layout-org h-full w-full overflow-y-scroll bg-white p-4 md:rounded-lg"
+                    >
+                        <slot />
+                    </div>
                 </div>
             </NLayout>
         </NLayout>
@@ -40,29 +42,18 @@
 <script lang="ts" setup>
 import { breakpointsTailwind } from '@vueuse/core'
 import { NLayoutSider, NLayout, useLoadingBar } from 'naive-ui'
-// import { COLLAPSED_SIDEBAR_PAGES } from './config'
 import SidebarMenu from '@/components/SidebarMenu/index.vue'
 import { useAuthStore } from '~/store/auth'
 
 const auth = useAuthStore()
-// const route = useRoute()
 const loadingBar = useLoadingBar()
 
 const isAuthLoading = computed(() => auth.loading)
 
-// handle show/hide layout curtain
 const isShowLayoutCurtain = ref<boolean>(true)
 
 const breakPoints = useBreakpoints(breakpointsTailwind)
-// handle dynamic styling for sidebar
 
-// const isCollapsedSidebar = computed(
-//     () =>
-//         COLLAPSED_SIDEBAR_PAGES.includes(String(route.name)) ||
-//         breakPoints.smallerOrEqual('lg').value
-// )
-
-// handle dynamic styling for header
 const isMobile = breakPoints.smallerOrEqual('md')
 
 onMounted(async () => {

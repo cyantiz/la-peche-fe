@@ -2,7 +2,7 @@ import { Role } from './enums/Role'
 
 declare global {
     interface IUser {
-        id: number | null
+        id: number
         username: string | null
         cluster: number | null
         isActivated: boolean | null
@@ -40,7 +40,6 @@ declare global {
 
     type IUserInformation = Omit<
         IUser,
-        | 'id'
         | 'username'
         | 'cluster'
         | 'isActivated'
@@ -59,5 +58,9 @@ declare global {
         isThumbnail: boolean
         createdAt: string
         updatedAt: string
+    }
+
+    type IUserInformationWithImages = IUserInformation & {
+        images: IImage[]
     }
 }
