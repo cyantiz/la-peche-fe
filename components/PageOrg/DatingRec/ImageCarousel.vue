@@ -46,6 +46,34 @@ withDefaults(
                 </div>
             </div>
         </NCarouselItem>
+        <template v-if="images.length === 0">
+            <NCarouselItem
+                v-for="item in [1, 2]"
+                :key="item"
+                class="aspect-[3/4]"
+            >
+                <div class="profile-carousel-img flex aspect-[3/4]">
+                    <div
+                        class="flex h-full w-full items-stretch justify-stretch"
+                    >
+                        <NImage
+                            :src="noImageUrl"
+                            object-fit="cover"
+                            :preview-disabled="previewDisabled"
+                            lazy
+                        >
+                            <template #placeholder>
+                                <div
+                                    class="flex h-full w-full items-center justify-center bg-slate-200"
+                                >
+                                    <NSpin />
+                                </div>
+                            </template>
+                        </NImage>
+                    </div>
+                </div>
+            </NCarouselItem>
+        </template>
         <template #arrow="{ prev, next }">
             <div class="custom-arrow">
                 <button

@@ -24,7 +24,7 @@ const closeModal = () => {
 
 <template>
     <div
-        class="profile__section hover:border-theme inline-flex w-full flex-col items-center rounded-md border-2 border-solid border-inactive bg-white p-3 transition-all"
+        class="profile__section hover:border-theme mb-2 inline-flex w-full flex-col items-center rounded-md border-0 border-solid border-inactive bg-white p-3 transition-all md:mb-0 md:border-2"
         :class="{ 'w-full': block }"
     >
         <div

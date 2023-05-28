@@ -6,7 +6,7 @@ import { NSkeleton } from 'naive-ui'
     <div>
         <NSkeleton
             height="100%"
-            class="mx-auto flex aspect-[3/4] w-[calc(100vw-52px)] rounded-xl sm:aspect-[6/4] lg:aspect-[3/4] lg:h-full lg:w-96"
+            class="mx-auto flex aspect-[3/4] w-[calc(100vw-32px)] rounded-xl sm:aspect-[6/4] lg:aspect-[3/4] lg:h-full lg:w-96"
         />
     </div>
 </template>

@@ -8,9 +8,15 @@ defineProps<{}>()
 const { user } = useAuthStore()
 
 // test asyncData
-const { data, pending, error } = await useAsyncData<IUserInformation>(() => {
-    return useApiGet<IUserInformation>(`/users/info/${user.username}`)
-})
+const { data, pending, error } = await useAsyncData<IUserInformationWithImages>(
+    () => {
+        return useApiGet<IUserInformationWithImages>(
+            `/users/info-with-images/${user.username}`
+        )
+    }
+)
+
+const isShowPreview = ref(false)
 
 const loadingBar = useLoadingBar()
 onMounted(() => {
@@ -76,11 +82,11 @@ onMounted(() => {
                 />
             </div>
 
-            <div class="absolute bottom-0 left-0 right-0 p-4">
+            <div class="absolute bottom-0 left-0 right-0 md:p-4">
                 <div
-                    class="preview-btn-container h-full w-full rounded-lg bg-white px-16 py-2"
+                    class="preview-btn-container h-full w-full rounded-lg bg-white p-4"
                 >
-                    <NButton size="large" block>
+                    <NButton size="large" block @click="isShowPreview = true">
                         <template #icon>
                             <PhSparkle />
                         </template>
@@ -88,6 +94,14 @@ onMounted(() => {
                     </NButton>
                 </div>
             </div>
+
+            <Transition name="fade">
+                <PreviewMyProfile
+                    v-if="data && isShowPreview"
+                    :info-with-images="data"
+                    @close="isShowPreview = false"
+                />
+            </Transition>
         </div>
     </div>
 </template>
@@ -102,5 +116,15 @@ onMounted(() => {
         rgba(255, 255, 255, 0.8) 50%,
         rgba(255, 255, 255, 1) 100%
     );
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
 }
 </style>

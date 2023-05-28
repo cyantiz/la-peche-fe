@@ -28,12 +28,16 @@ defineEmits(['buttonClick', 'buttonMouseDown'])
         v-if="type === 'dislike'"
         class="dislike-btn cursor-pointer rounded-full bg-gold-metallic p-3 leading-[0] transition-all duration-200 hover:-translate-y-0.5"
         :class="{ _shadow: shadow }"
+        @click="$emit('buttonClick')"
+        @mousedown="$emit('buttonMouseDown')"
     >
         <PhX size="24" weight="bold" color="white" />
     </div>
     <div
         v-if="type === 'star'"
         class="cursor-pointer rounded-full p-3 leading-[0] text-green-apple transition-all duration-200 hover:-translate-y-0.5 hover:bg-green-apple hover:text-white"
+        @click="$emit('buttonClick')"
+        @mousedown="$emit('buttonMouseDown')"
     >
         <PhStar
             size="24"

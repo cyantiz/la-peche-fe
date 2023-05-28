@@ -57,7 +57,7 @@ const age = computed(() => {
                 </div>
             </div>
             <div class="info__basic">
-                <div class="mb-2 ml-1 text-lg font-bold">Basic</div>
+                <div class="mb-2 text-lg font-bold">Basic</div>
                 <div class="items flex flex-wrap gap-2">
                     <PageOrgDatingRecDetailInformationTag
                         v-show="info?.height"
@@ -67,9 +67,7 @@ const age = computed(() => {
                 </div>
             </div>
             <div class="info__relationship">
-                <div class="mb-2 ml-1 text-lg font-bold">
-                    Relationship Expected
-                </div>
+                <div class="mb-2 text-lg font-bold">Relationship Expected</div>
                 <div class="items flex flex-wrap gap-2">
                     <PageOrgDatingRecDetailInformationTag
                         v-show="info?.orientation"
@@ -84,7 +82,7 @@ const age = computed(() => {
                 </div>
             </div>
             <div class="info__additional">
-                <div class="mb-2 ml-1 text-lg font-bold">Additional</div>
+                <div class="mb-2 text-lg font-bold">Additional</div>
                 <div class="items flex flex-wrap gap-2">
                     <PageOrgDatingRecDetailInformationTag
                         v-show="info?.speaks"

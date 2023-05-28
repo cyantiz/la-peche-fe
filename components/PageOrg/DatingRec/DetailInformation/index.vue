@@ -23,9 +23,8 @@ const sm = breakPoints.smallerOrEqual('sm')
         @close="$emit('close')"
     >
         <NCard
-            class="h-screen lg:h-auto"
+            class="detail-card mx-auto h-screen w-full lg:h-auto lg:w-auto"
             header-style="padding: 16px 16px 16px 16px"
-            style="margin-inline: auto; width: auto"
             :bordered="false"
             content-style="display: flex; height: full; overflow:scroll; position: relative"
             :size="lg ? 'small' : 'large'"

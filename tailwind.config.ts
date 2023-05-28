@@ -28,6 +28,9 @@ module.exports = {
                 ocean: '#63B9DB',
                 'inactive-base': '#F8FAFB',
             },
+            screens: {
+                xs: '480px',
+            },
             transitionDuration: {
                 DEFAULT: '300ms',
             },

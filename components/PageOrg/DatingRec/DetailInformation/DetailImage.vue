@@ -11,7 +11,7 @@ withDefaults(
 </script>
 
 <template>
-    <div class="mx-auto flex w-[calc(100vw-52px)] lg:h-full lg:w-96">
+    <div class="mx-auto flex w-[calc(100vw-32px)] lg:h-full lg:w-96">
         <PageOrgDatingRecImageCarousel
             :images="images"
             :slides-per-view="slidesPerView"
