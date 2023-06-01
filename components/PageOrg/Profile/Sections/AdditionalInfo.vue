@@ -70,7 +70,17 @@ const informationRecords = [
         title="Additional information"
         :information-records="informationRecords"
     >
-        <template #modal-content> Edit form cho basic information </template>
+        <template #modal="{ title, closeModal, showModal }">
+            <PageOrgProfileSectionsBaseModalDialog
+                :loading="true"
+                :title="title"
+                :show="showModal"
+                @close="closeModal"
+                @negative-click="closeModal"
+            >
+                addition info modal
+            </PageOrgProfileSectionsBaseModalDialog>
+        </template>
     </PageOrgProfileSectionsBaseProfileSectionTable>
 </template>
 

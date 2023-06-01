@@ -53,14 +53,12 @@ const closeModal = () => {
             </template>
         </InformationItem>
     </div>
-    <PageOrgProfileSectionsBaseModalDialog
+    <slot
+        name="modal"
+        :close-modal="closeModal"
+        :show-modal="isModalOpen"
         :title="title"
-        :show="isModalOpen"
-        @close="closeModal"
-        @negative-click="closeModal"
-    >
-        <slot name="modal-content" />
-    </PageOrgProfileSectionsBaseModalDialog>
+    />
 </template>
 
 <style lang="less" scoped></style>

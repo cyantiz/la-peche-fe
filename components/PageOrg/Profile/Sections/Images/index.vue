@@ -5,14 +5,24 @@ useHead({
     title: 'My Profile',
 })
 
-const images = ref<string[]>([
-    'https://i.pinimg.com/originals/f7/4b/d3/f74bd336c65ea7dae95702df3f760840.jpg',
-    '',
-    '',
-    '',
-    '',
-    '',
-])
+const props = defineProps<{
+    images: IImage[]
+}>()
+
+const imagesPad = computed(() => {
+    const images = props.images
+    if (images.length < 6) {
+        const pad = new Array(6 - images.length).fill({
+            id: Date.now().toString(),
+            url: '',
+            isThumbnail: false,
+            updatedAt: '',
+            createdAt: '',
+        } as IImage)
+        return [...images, ...pad]
+    }
+    return images
+})
 </script>
 
 <template>
@@ -30,13 +40,12 @@ const images = ref<string[]>([
             </div>
             <div class="flex flex-wrap">
                 <Image
-                    v-for="(image, index) in images"
-                    :key="index"
-                    :src="image"
+                    v-for="image in imagesPad"
+                    :key="image.id"
+                    :src="image.url"
                 />
             </div>
         </template>
-        <template #modal-content> Edit form for biographic </template>
     </PageOrgProfileSectionsBaseProfileSection>
 </template>
 

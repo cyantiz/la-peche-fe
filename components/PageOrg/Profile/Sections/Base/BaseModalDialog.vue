@@ -3,6 +3,7 @@ import { NModal } from 'naive-ui'
 defineProps<{
     title: string
     show: boolean
+    loading: boolean | undefined
 }>()
 
 defineEmits(['close', 'negativeClick', 'positiveClick'])
@@ -12,11 +13,13 @@ defineEmits(['close', 'negativeClick', 'positiveClick'])
     <NModal
         :show="show"
         :show-icon="false"
+        class="profile-sections-base-modal-dialog"
         preset="dialog"
         positive-text="Save"
         negative-text="Cancel"
         :negative-button-props="{ size: 'medium' }"
         :positive-button-props="{ size: 'medium' }"
+        :loading="Boolean(loading)"
         @positive-click="$emit('positiveClick')"
         @negative-click="$emit('negativeClick')"
         @mask-click="$emit('close')"

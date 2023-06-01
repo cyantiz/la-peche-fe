@@ -125,6 +125,34 @@ const themeBitterSweetOverrides: GlobalThemeOverrides = {
         borderHoverWarning: '3px solid ' + Color.GreenApple,
         borderFocusWarning: '3px solid ' + Color.GreenApple,
     },
+    InternalSelection: {
+        border: '3px solid #000000',
+        borderActive: '3px solid ' + Color.BitterSweet,
+        borderHover: '3px solid ' + Color.BitterSweet,
+        borderFocus: '3px solid ' + Color.BitterSweet,
+        borderError: '3px solid ' + Color.Cherry,
+        borderHoverError: '3px solid ' + Color.Cherry,
+        borderFocusError: '3px solid ' + Color.Cherry,
+        borderActiveError: '3px solid ' + Color.Cherry,
+        borderWarning: '3px solid ' + Color.GreenApple,
+        borderActiveWarning: '3px solid ' + Color.GreenApple,
+        borderHoverWarning: '3px solid ' + Color.GreenApple,
+        borderFocusWarning: '3px solid ' + Color.GreenApple,
+
+        borderRadius: '5px',
+
+        heightLarge: '50px',
+        fontSizeLarge: '1rem',
+
+        heightMedium: '40px',
+        fontSizeMedium: '0.925rem',
+
+        heightSmall: '32px',
+        fontSizeSmall: '0.875rem',
+
+        heightTiny: '24px',
+        fontSizeTiny: '0.75rem',
+    },
     Alert: {
         border: '1px solid ' + Color.BitterSweet,
         borderInfo: '1px solid ' + Color.Ocean,

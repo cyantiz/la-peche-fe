@@ -63,4 +63,22 @@ declare global {
     type IUserInformationWithImages = IUserInformation & {
         images: IImage[]
     }
+
+    interface IAreaProvince {
+        code: string
+        name: string
+    }
+
+    interface IAreaDistrict {
+        code: string
+        name: string
+        province: string
+    }
+
+    interface IAreaCommune {
+        code: string
+        name: string
+        district: string
+        province: string
+    }
 }
