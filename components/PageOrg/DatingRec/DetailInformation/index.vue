@@ -26,14 +26,14 @@ const sm = breakPoints.smallerOrEqual('sm')
             class="detail-card mx-auto h-screen w-full lg:h-auto lg:w-auto"
             header-style="padding: 16px 16px 16px 16px"
             :bordered="false"
-            content-style="display: flex; height: full; overflow:scroll; position: relative"
+            content-style="display: flex; height: full; overflow-y: auto; position: relative"
             :size="lg ? 'small' : 'large'"
             role="dialog"
             aria-modal="true"
             :closable="true"
             @close="$emit('close')"
         >
-            <div class="flex h-full flex-col gap-8 overflow-scroll lg:flex-row">
+            <div class="flex h-full flex-col gap-8 overflow-y-auto lg:flex-row">
                 <PageOrgDatingRecDetailImageSkeleton v-show="!images" />
 
                 <PageOrgDatingRecDetailImage

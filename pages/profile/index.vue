@@ -94,6 +94,7 @@ onMounted(() => {
                     :job="localData.job"
                     :education="localData.education"
                     :income="localData.income"
+                    @update="handlePartialUpdateLocalData"
                 />
 
                 <PageOrgProfileSectionsAdditionalInfo

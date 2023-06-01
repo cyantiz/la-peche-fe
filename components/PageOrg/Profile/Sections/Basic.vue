@@ -16,6 +16,7 @@ import {
     PhRuler,
     PhUsersThree,
 } from 'phosphor-vue'
+import globalEthnicities from '~/utils/global-ethnicities'
 import { useAreaStore } from '~/store/area'
 import { useAuthStore } from '~/store/auth'
 import { useProfileStore } from '~/store/profile'
@@ -53,7 +54,13 @@ const informationRecords = computed(() => [
     },
     {
         title: 'Living in',
-        content: props.location?.split(',').slice(-3, -2).toString() ?? '',
+        content:
+            props.location
+                ?.split(',')
+                .slice(-3, -2)
+                .toString()
+                .replace(/(Tỉnh|Thành phố|Huyện|Quận|Xã|Phường|Thị xã)/, '') ??
+            '',
         iconComponent: PhMapPin,
     },
     {
@@ -108,6 +115,12 @@ const communeOptions = computed(() =>
     areaCode.district
         ? area2NaiveOptions(area.listCommunesByDistrictCode(areaCode.district))
         : []
+)
+const ethnicityOptions = computed(() =>
+    globalEthnicities.map((item) => ({
+        label: item,
+        value: item,
+    }))
 )
 
 const locationString = computed(() => {
@@ -239,6 +252,21 @@ const updateBasicInfo = async (closeModal: () => void) => {
                     <NFormItem
                         size="large"
                         :show-label="true"
+                        label="Ethnicity"
+                        label-placement="left"
+                        path="ethnicity"
+                    >
+                        <NSelect
+                            v-model:value="patchingData.ethnicity"
+                            placeholder="E.g: Vietnamese"
+                            :input-props="{ autocomplete: 'off' }"
+                            :options="ethnicityOptions"
+                            @keydown.enter.prevent
+                        />
+                    </NFormItem>
+                    <NFormItem
+                        size="large"
+                        :show-label="true"
                         label="Height"
                         path="height"
                     >
@@ -246,6 +274,8 @@ const updateBasicInfo = async (closeModal: () => void) => {
                             v-model:value="patchingData.height"
                             :loading="area.loading"
                             placeholder="170"
+                            :min="1"
+                            :max="300"
                             :input-props="{ autocomplete: 'off' }"
                             @keydown.enter.prevent
                         >

@@ -26,7 +26,7 @@ const age = computed(() => {
     <div
         class="static flex w-full flex-col gap-2 px-5 pb-16 lg:relative lg:h-[512px] lg:w-96 lg:pl-0 lg:pr-2"
     >
-        <div class="info flex flex-col gap-4 lg:overflow-scroll">
+        <div class="info flex flex-col gap-4 lg:overflow-y-auto">
             <div class="info__very-basic">
                 <span class="mb-2 text-3xl font-bold"
                     >{{ info?.name }}, {{ age }}</span
@@ -35,7 +35,16 @@ const age = computed(() => {
                     class="flex items-center gap-2.5 text-lg font-medium text-inactive"
                 >
                     <PhMapPin weight="fill" size="20" />
-                    {{ info?.location }}
+                    {{
+                        info?.location
+                            ?.split(',')
+                            .slice(3, 5)
+                            .join(', ')
+                            .replace(
+                                /(Tỉnh|Thành phố|Huyện|Quận|Xã|Phường|Thị xã)/,
+                                ''
+                            )
+                    }}
                 </span>
                 <span
                     class="flex items-center gap-2.5 text-lg font-medium text-inactive"

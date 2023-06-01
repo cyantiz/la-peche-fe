@@ -12,7 +12,10 @@ export const area2NaiveOptions = (
 ) => {
     return array.map((item) => {
         return {
-            label: item.name,
+            label: item.name.replace(
+                /(Tỉnh|Thành phố|Huyện|Quận|Xã|Phường|Thị xã)/,
+                ''
+            ),
             value: item.code,
         }
     })

@@ -240,7 +240,16 @@ const isDraggingToDislike = computed(() => {
                             class="flex items-center gap-2.5 text-base font-medium text-gray-200"
                         >
                             <PhMapPin weight="fill" size="18" />
-                            {{ infoWithImages.location }}
+                            {{
+                                infoWithImages.location
+                                    .split(',')
+                                    .slice(3, 4)
+                                    .join('')
+                                    .replace(
+                                        /(Tỉnh|Thành phố|Huyện|Quận|Xã|Phường|Thị xã)/,
+                                        ''
+                                    )
+                            }}
                         </span>
                         <span
                             v-if="infoWithImages.education"
