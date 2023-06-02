@@ -19,10 +19,15 @@
         </div>
         <div class="hidden w-full overflow-hidden p-6 lg:block">
             <div
-                class="bg-image bg-cove flex h-full w-full items-end rounded-3xl p-12 text-6xl font-black"
+                class="bg-image bg-cove flex h-full w-full items-end overflow-hidden rounded-3xl text-4xl font-black xl:text-5xl 2xl:text-7xl"
             >
-                <div class="w-3/4">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                <div
+                    class="mt-auto flex h-1/3 w-full items-end bg-gradient-to-t from-[#333] to-transparent p-12"
+                >
+                    <div class="w-3/4 text-white">
+                        Easy way to find <br />
+                        <span class="text-bitter-sweet">your matches</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -52,6 +57,8 @@ router.beforeEach(() => {
 
 <style lang="less" scoped>
 .bg-image {
-    background-image: url('https://via.placeholder.com/1000/C4C4C4?text=');
+    background-image: url('https://res.cloudinary.com/cyantiz/image/upload/v1685643208/lapeche/static/np_file_210391_ez4lkx.jpg');
+    background-position: center;
+    object-fit: cover;
 }
 </style>

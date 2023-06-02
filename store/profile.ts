@@ -23,6 +23,11 @@ export interface UpdateProfileDTO {
     speaks?: string | null
 }
 
+export interface UploadImageDTO {
+    url: string
+    isThumbnail: boolean
+}
+
 interface IProfileStoreState {}
 
 export const useProfileStore = defineStore({
@@ -35,6 +40,21 @@ export const useProfileStore = defineStore({
 
             return useApiPut<void>(`/users/${username}`, {
                 body: { ...profileInfo },
+            })
+        },
+        addImage(payload: UploadImageDTO) {
+            // check if url is valid (start with https://res.cloudinary.com and include lapeche)
+            const { url } = payload
+            const config = useRuntimeConfig()
+            const preset = config.public.cloudinaryPreset
+            if (
+                !url.startsWith('https://res.cloudinary.com') ||
+                !url.includes(preset)
+            )
+                return
+
+            return useApiPost<IImage>('/users/images', {
+                body: payload,
             })
         },
     },

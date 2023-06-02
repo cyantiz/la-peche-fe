@@ -106,6 +106,7 @@ onMounted(() => {
                     :diet="localData.diet"
                     :drinks="localData.drinks"
                     :sign="localData.sign"
+                    @update="handlePartialUpdateLocalData"
                 />
             </div>
 

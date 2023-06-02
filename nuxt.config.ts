@@ -99,7 +99,11 @@ export default defineNuxtConfig({
         public: {
             apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL,
             ENV: process.env.ENV,
+            cloudinaryName: process.env.NUXT_PRIVATE_CLOUDINARY_NAME,
+            cloudinaryPreset: process.env.NUXT_PRIVATE_CLOUDINARY_PRESET,
+            cloudinaryFolder: process.env.NUXT_PRIVATE_CLOUDINARY_FOLDER,
         },
+        private: {},
     },
 
     // vite: {

@@ -5,8 +5,8 @@ import {
     useNotification,
     NForm,
     NFormItem,
-    NInput,
     NInputNumber,
+    NAutoComplete,
 } from 'naive-ui'
 import { useAuthStore } from '~/store/auth'
 import { useProfileStore } from '~/store/profile'
@@ -37,7 +37,11 @@ const informationRecords = computed(() => [
     },
 ])
 
-const patchingData = reactive({ ...props })
+const patchingData = reactive({
+    ...props,
+    job: props.job ?? '',
+    education: props.education ?? '',
+})
 
 const profileStore = useProfileStore()
 const auth = useAuthStore()
@@ -46,7 +50,7 @@ const notification = useNotification()
 
 const pending = ref(false)
 
-const updateBasicInfo = async (closeModal: () => void) => {
+const updateJobAndEduInfo = async (closeModal: () => void) => {
     pending.value = true
     try {
         await profileStore.updateProfile({
@@ -75,6 +79,21 @@ const updateBasicInfo = async (closeModal: () => void) => {
 }
 
 // const incomeOptions = array2NaiveOptions(Object.values(Income))
+const jobOptions = computed(() => {
+    if (!patchingData.job.length) return jobTitles
+
+    return jobTitles.filter((item) =>
+        item.toLowerCase().includes(patchingData.job.toLowerCase() ?? '')
+    )
+})
+
+const universityOptions = computed(() => {
+    if (!patchingData.education.length) return universities
+
+    return universities.filter((item) =>
+        item.toLowerCase().includes(patchingData.education.toLowerCase() ?? '')
+    )
+})
 </script>
 
 <template>
@@ -84,21 +103,21 @@ const updateBasicInfo = async (closeModal: () => void) => {
     >
         <template #modal="{ title, closeModal, showModal }">
             <PageOrgProfileSectionsBaseModalDialog
+                class="job-and-education-modal"
                 :loading="pending"
                 :title="title"
                 :show="showModal"
                 @close="closeModal"
                 @negative-click="closeModal"
-                @positive-click="updateBasicInfo(closeModal)"
+                @positive-click="updateJobAndEduInfo(closeModal)"
             >
                 <NForm
                     class="flex flex-col gap-2"
                     :model="patchingData"
                     label-placement="left"
-                    label-width="120px"
+                    label-width="90px"
                     label-align="left"
-                    @submit.prevent="updateBasicInfo(closeModal)"
-                    @keydown.enter.prevent="updateBasicInfo(closeModal)"
+                    @submit.prevent="updateJobAndEduInfo(closeModal)"
                 >
                     <NFormItem
                         size="large"
@@ -106,8 +125,10 @@ const updateBasicInfo = async (closeModal: () => void) => {
                         label="Job title"
                         path="job"
                     >
-                        <NInput
+                        <NAutoComplete
                             v-model:value="patchingData.job"
+                            :get-show="() => true"
+                            :options="jobOptions"
                             placeholder="E.g. Software Engineer"
                             :input-props="{ autocomplete: 'off' }"
                             @keydown.enter.prevent
@@ -119,8 +140,10 @@ const updateBasicInfo = async (closeModal: () => void) => {
                         label="University"
                         path="education"
                     >
-                        <NInput
+                        <NAutoComplete
                             v-model:value="patchingData.education"
+                            :get-show="() => true"
+                            :options="universityOptions"
                             placeholder="E.g. Harvard University"
                             :input-props="{ autocomplete: 'off' }"
                             @keydown.enter.prevent
@@ -134,13 +157,6 @@ const updateBasicInfo = async (closeModal: () => void) => {
                         placeholder="Income"
                         path="income"
                     >
-                        <!-- <NSelect
-                            v-model:value="patchingData.income"
-                            placeholder="Select your income"
-                            :input-props="{ autocomplete: 'off' }"
-                            :options="incomeOptions"
-                            @keydown.enter.prevent
-                        /> -->
                         <NInputNumber
                             v-model:value="patchingData.income"
                             :min="0"

@@ -212,7 +212,7 @@ const isDraggingToDislike = computed(() => {
                         :style="{
                             opacity: isDraggingToDislike ? 1 : 0,
                         }"
-                        class="-rotate-12 rounded-xl border-2 border-solid border-gold-metallic px-4 py-2 text-xl font-bold uppercase text-gold-metallic shadow-xl transition-all"
+                        class="-rotate-12 rounded-xl border-2 border-solid border-gold-metallic bg-gold-metallic px-4 py-2 text-xl font-bold uppercase text-[#411A71] shadow-xl transition-all"
                     >
                         Skip
                     </div>
@@ -220,7 +220,7 @@ const isDraggingToDislike = computed(() => {
                         :style="{
                             opacity: isDraggingToLike ? 1 : 0,
                         }"
-                        class="rotate-12 rounded-xl border-2 border-solid border-bitter-sweet px-4 py-2 text-xl font-bold uppercase text-bitter-sweet shadow-xl transition-all duration-100"
+                        class="rotate-12 rounded-xl border-2 border-solid border-bitter-sweet bg-bitter-sweet px-4 py-2 text-xl font-bold uppercase text-black shadow-xl transition-all duration-100"
                     >
                         Like
                     </div>
@@ -241,14 +241,12 @@ const isDraggingToDislike = computed(() => {
                         >
                             <PhMapPin weight="fill" size="18" />
                             {{
-                                infoWithImages.location
-                                    .split(',')
-                                    .slice(3, 4)
-                                    .join('')
-                                    .replace(
-                                        /(Tỉnh|Thành phố|Huyện|Quận|Xã|Phường|Thị xã)/,
-                                        ''
-                                    )
+                                removeAreaPrefix(
+                                    infoWithImages.location
+                                        .split(',')
+                                        .slice(3, 4)
+                                        .join('')
+                                )
                             }}
                         </span>
                         <span

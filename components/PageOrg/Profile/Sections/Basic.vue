@@ -55,12 +55,9 @@ const informationRecords = computed(() => [
     {
         title: 'Living in',
         content:
-            props.location
-                ?.split(',')
-                .slice(-3, -2)
-                .toString()
-                .replace(/(Tỉnh|Thành phố|Huyện|Quận|Xã|Phường|Thị xã)/, '') ??
-            '',
+            removeAreaPrefix(
+                props.location?.split(',').slice(-3, -2).toString()
+            ) ?? '',
         iconComponent: PhMapPin,
     },
     {
@@ -85,10 +82,6 @@ const pending = ref(false)
 const genderOptions = Object.values(Gender).map((item) => ({
     label: item,
     value: item,
-}))
-const yearOfBirthOptions = Array.from({ length: 100 }, (_, i) => ({
-    label: `${new Date().getFullYear() - i}`,
-    value: new Date().getFullYear() - i,
 }))
 
 if (props.location?.split(',')[0]) {
@@ -116,6 +109,12 @@ const communeOptions = computed(() =>
         ? area2NaiveOptions(area.listCommunesByDistrictCode(areaCode.district))
         : []
 )
+
+const yearOfBirthOptions = Array.from({ length: 100 }, (_, i) => ({
+    label: `${new Date().getFullYear() - i}`,
+    value: new Date().getFullYear() - i,
+}))
+
 const ethnicityOptions = computed(() =>
     globalEthnicities.map((item) => ({
         label: item,

@@ -19,17 +19,20 @@ defineEmits(['addButtonClick'])
 
 <template>
     <div
-        class="inline-flex w-full items-center justify-between px-3 py-[6px]"
+        class="inline-flex w-full flex-col justify-between gap-2 px-3 py-[6px] sm:flex-row sm:items-center sm:gap-0"
         :class="{ 'w-full ': block }"
     >
         <div
-            class="inline-flex items-center gap-2"
+            class="inline-flex items-center self-start"
             :class="{ 'w-full': block }"
         >
             <slot name="icon" :size="18" color="black" />
             <span class="font-bold">{{ title }}</span>
         </div>
-        <div v-if="content" class="text-md text-right font-medium">
+        <div
+            v-if="content"
+            class="text-md max-w-[80%] self-end text-right font-medium sm:max-w-[60%]"
+        >
             {{ content }}
         </div>
         <div

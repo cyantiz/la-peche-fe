@@ -36,14 +36,9 @@ const age = computed(() => {
                 >
                     <PhMapPin weight="fill" size="20" />
                     {{
-                        info?.location
-                            ?.split(',')
-                            .slice(3, 5)
-                            .join(', ')
-                            .replace(
-                                /(Tỉnh|Thành phố|Huyện|Quận|Xã|Phường|Thị xã)/,
-                                ''
-                            )
+                        removeAreaPrefix(
+                            info?.location?.split(',').slice(3, 5).join(', ')
+                        )
                     }}
                 </span>
                 <span

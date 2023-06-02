@@ -12,11 +12,16 @@ export const area2NaiveOptions = (
 ) => {
     return array.map((item) => {
         return {
-            label: item.name.replace(
-                /(Tỉnh|Thành phố|Huyện|Quận|Xã|Phường|Thị xã)/,
-                ''
-            ),
+            label: removeAreaPrefix(item.name),
             value: item.code,
         }
     })
+}
+
+export const removeAreaPrefix = (area: string | undefined) => {
+    if (!area?.length) return area
+    return area.replace(
+        /(Tỉnh|Thành phố|Thành Phố|Huyện|Quận|Xã|Phường|Thị xã)/,
+        ''
+    )
 }

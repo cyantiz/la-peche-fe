@@ -47,7 +47,10 @@ const updateBiographic = async (closeModal: () => void) => {
 <template>
     <PageOrgProfileSectionsBaseProfileSection block title="Biographic">
         <template #content>
-            <p v-if="biographic" class="text-center text-base">
+            <p
+                v-if="biographic"
+                class="max-h-[114px] overflow-y-auto text-center text-base"
+            >
                 {{ biographic }}
             </p>
             <p v-if="!biographic" class="text-center text-base text-gray-400">

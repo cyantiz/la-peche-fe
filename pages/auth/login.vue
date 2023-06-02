@@ -88,7 +88,9 @@ onMounted(() => {
 
 <template>
     <div>
-        <div class="mb-6 text-2xl font-bold lg:text-4xl">Welcome back!</div>
+        <div class="mb-6 text-2xl font-bold lg:text-3xl">
+            Welcome back, <span class="text-bitter-sweet"> Mate! </span>
+        </div>
         <NForm
             ref="formRef"
             :model="form"
