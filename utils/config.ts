@@ -1,13 +1,14 @@
 export const defaultAPIBaseURL = '/api/'
 
-export const getServerEnvApiBaseUrl = () =>
-    process?.env?.NUXT_PUBLIC_API_BASE_URL
-
-export const getClientEnvApiBaseUrl = () => import.meta.env.VITE_API_BASE_URL
-
 export const getApiBaseUrl = () => {
-    const serverEnv = getServerEnvApiBaseUrl()
-    const clientEnv = getClientEnvApiBaseUrl()
+    const runtimeConfig = useRuntimeConfig()
+    const apiBaseUrl = runtimeConfig.public.apiBaseUrl
 
-    return serverEnv || clientEnv || defaultAPIBaseURL
+    return apiBaseUrl || defaultAPIBaseURL
 }
+
+export const noImageUrl =
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png'
+
+export const swipeLimitRatioTouchDevice = 0.2
+export const swipeLimitRatioDesktop = 0.6

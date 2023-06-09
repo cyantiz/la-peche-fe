@@ -1,5 +1,5 @@
 import { GlobalThemeOverrides } from 'naive-ui'
-import { Color } from './color'
+import { Color } from './config'
 
 const themeOverrides: GlobalThemeOverrides = {
     common: {

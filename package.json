@@ -1,9 +1,11 @@
 {
+    "name": "la-peche",
+    "version": "0.0.1",
     "private": true,
     "scripts": {
-        "build": "nuxt build",
-        "dev": "nuxt dev --port 5173",
-        "generate": "nuxt generate",
+        "build": "ENV=dev nuxt build",
+        "dev": "ENV=dev nuxt dev --port 1203",
+        "generate": "env=dev nuxt generate",
         "preview": "nuxt preview",
         "postinstall": "nuxt prepare",
         "lint": "eslint . --ext .ts,.vue",
@@ -12,7 +14,6 @@
     },
     "devDependencies": {
         "@nuxtjs/eslint-config-typescript": "^12.0.0",
-        "@types/cookie-parser": "^1.4.3",
         "@vueuse/core": "^9.12.0",
         "@vueuse/nuxt": "^9.12.0",
         "autoprefixer": "^10.4.13",
@@ -34,14 +35,19 @@
     "dependencies": {
         "@css-render/vue3-ssr": "^0.15.12",
         "@nuxt/types": "^2.16.3",
+        "@nuxtjs/sentry": "^7.2.2",
         "@pinia/nuxt": "^0.4.6",
-        "cookie-parser": "^1.4.6",
+        "@vueuse/components": "^10.1.2",
+        "firebase": "^9.22.2",
         "jwt-decode": "^3.1.2",
         "naive-ui": "^2.34.3",
         "phosphor-vue": "^4.4.1",
         "pinia": "^2.0.29",
         "url-pattern": "^1.0.3",
-        "vfonts": "^0.0.3"
+        "uuid": "^9.0.0",
+        "vfonts": "^0.0.3",
+        "vue-draggable-next": "^2.2.0",
+        "vuedraggable": "^4.1.0"
     },
     "overrides": {
         "vue": "latest"

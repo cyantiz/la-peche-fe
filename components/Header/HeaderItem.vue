@@ -1,53 +1,11 @@
-<script setup lang="ts">
-const props = withDefaults(
-    defineProps<{
-        size: 'small' | 'medium'
-        shape: 'circle' | 'rounded-square'
-    }>(),
-    {
-        size: 'medium',
-        shape: 'circle',
-    }
-)
-
-const classes = computed(() => {
-    let size = ''
-    let shape = ''
-    switch (props.size) {
-        case 'small':
-            size = 'p-[10px]'
-            break
-        case 'medium':
-            size = 'p-3'
-            break
-    }
-
-    switch (props.shape) {
-        case 'circle':
-            shape = 'rounded-full'
-            break
-        case 'rounded-square':
-            shape = 'rounded-lg'
-            break
-    }
-
-    return `cursor-pointer bg-[#E4E6EB] hover:bg-[#D8DADF] flex items-center justify-center ${size} ${shape}`
-})
-
-const iconSize = computed(() => {
-    switch (props.size) {
-        case 'small':
-            return 20
-        case 'medium':
-            return 28
-    }
-})
-</script>
+<script setup lang="ts"></script>
 
 <template>
-    <div :class="classes">
-        <slot name="icon" :size="iconSize" color="black" />
-    </div>
+    <button
+        class="focus:bg-theme hover:bg-theme group relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-md border-0 bg-white p-0 transition-all duration-200 focus-within:-translate-y-0.5 focus-within:text-white hover:-translate-y-0.5 hover:text-white focus:-translate-y-0.5 focus:text-white"
+    >
+        <slot name="button" />
+    </button>
 </template>
 
 <style lang="less" scoped></style>

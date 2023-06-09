@@ -1,77 +1,135 @@
+import { DocumentData, DocumentReference } from 'firebase/firestore'
 import { Role } from './enums/Role'
 
 declare global {
-    interface User {
+    interface IUser {
         id: number
-        username: string
-        cluster: number
-        isActivated: boolean
-        isDeleted: boolean
-        verifyAt: Date
-        premiumEndsAt: Date
-        createdAt: Date
-        updatedAt: Date
-        lastOnline: Date
-        role: Role
-        name: string
-        gender: string
-        status: string
-        orientation: string
-        biographic: string
-        email: string
-        phoneNumber: string
-        yearOfBirth: number
-        bodyType: string
-        diet: string
-        drinks: string
-        drugs: string
-        education: string
-        ethnicity: string
-        height: string
-        income: number
-        job: string
-        location: string
-        offspring: string
-        pets: string
-        sign: string
-        smokes: string
-        speaks: string
+        username: string | null
+        cluster: number | null
+        isActivated: boolean | null
+        isDeleted: boolean | null
+        verifyAt: Date | null
+        premiumEndsAt: Date | null
+        createdAt: Date | null
+        updatedAt: Date | null
+        lastOnline: Date | null
+        role: Role | null
+        name: string | null
+        gender: string | null
+        status: string | null
+        orientation: string | null
+        biographic: string | null
+        email: string | null
+        phoneNumber: string | null
+        yearOfBirth: number | null
+        bodyType: string | null
+        diet: string | null
+        drinks: string | null
+        drugs: string | null
+        education: string | null
+        ethnicity: string | null
+        height: number | null
+        income: number | null
+        job: string | null
+        location: string | null
+        offspring: string | null
+        pets: string | null
+        sign: string | null
+        smokes: string | null
+        speaks: string | null
     }
 
-    interface UserInformation {
+    type IUserInformation = Omit<
+        IUser,
+        | 'username'
+        | 'cluster'
+        | 'isActivated'
+        | 'isDeleted'
+        | 'verifyAt'
+        | 'premiumEndsAt'
+        | 'createdAt'
+        | 'updatedAt'
+        | 'lastOnline'
+        | 'role'
+    >
+
+    type IImage = {
         id: number
-        username: string
-        cluster: number
-        isActivated: true
-        isDeleted: true
-        verifyAt: Date
-        premiumEndsAt: Date
+        url: string
+        isThumbnail: boolean
+        createdAt: string
+        updatedAt: string
+        order: number
+    }
+
+    type IUserInformationWithImages = IUserInformation & {
+        images: IImage[]
+    }
+
+    type INotification = {
+        id: number
+        text: string
+        status: NotificationStatus
         createdAt: Date
         updatedAt: Date
-        lastOnline: Date
-        role: string
+        userId: number
+    }
+
+    enum NotificationStatus {
+        READ = 'READ',
+        UNREAD = 'UNREAD',
+        PINNED = 'PINNED',
+    }
+
+    interface IAreaProvince {
+        code: string
         name: string
-        gender: string
-        status: string
-        orientation: string
-        biographic: string
-        email: string
-        phoneNumber: string
-        yearOfBirth: number
-        bodyType: string
-        diet: string
-        drinks: string
-        drugs: string
-        education: string
-        ethnicity: string
-        height: number
-        income: number
-        job: string
-        location: string
-        offspring: string
-        pets: string
-        sign: string
-        smokes: string
-        speaks: string
+    }
+
+    interface IAreaDistrict {
+        code: string
+        name: string
+        province: string
+    }
+
+    interface IAreaCommune {
+        code: string
+        name: string
+        district: string
+        province: string
+    }
+
+    interface IPagination {
+        page: number
+        pageSize: number
+        total: number
+        totalPages: number
+    }
+
+    interface IChatUserInfo {
+        id: number
+        avatar: string
+        username: string
+        name: string
+    }
+
+    interface IFirebaseTimestamp {
+        nanoseconds: number
+        seconds: number
+    }
+    interface IUserChat {
+        date: IFirebaseTimestamp
+        userInfo: IChatUserInfo
+        messages: DocumentReference<IChat>
+    }
+
+    interface IMessage {
+        createdAt: IFirebaseTimestamp
+        sender: number
+        text: string
+    }
+
+    interface IChat {
+        messages: IMessage[]
     }
 }

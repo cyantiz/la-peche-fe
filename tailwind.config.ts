@@ -1,6 +1,3 @@
-// import { color } from './theme/color'
-// this line above doesn't work because cannot use import statement outside a module
-
 module.exports = {
     content: [
         './components/**/*.{js,vue,ts}',
@@ -15,7 +12,7 @@ module.exports = {
     },
     theme: {
         fontFamily: {
-            sans: ['Roboto', 'sans-serif'],
+            sans: ['Whyte', 'Montserrat', 'Roboto', 'sans-serif'],
             serif: ['Playfair Display', 'serif'],
         },
         extend: {
@@ -24,10 +21,15 @@ module.exports = {
                 'raisin-black': '#221D23',
                 'cafe-noir': '#4F3824',
                 'gold-metallic': '#DDB967',
-                'yellow-green-crayola': '#D0E37F',
+                'green-apple': '#18A058',
                 'almost-white': '#FEFEFE',
+                cherry: '#CA1919',
                 inactive: '#A8AAB9',
+                ocean: '#63B9DB',
                 'inactive-base': '#F8FAFB',
+            },
+            screens: {
+                xs: '480px',
             },
             transitionDuration: {
                 DEFAULT: '300ms',

@@ -1,7 +1,7 @@
 <div align="center">
     <h2>La Pêche - Dating platform</div>    
     <div align="center">
-        <img src="assets/img/logo640-text-under.png" width=20%>
+        <img src="/public/img/logo640-text-under.png" width=20%>
     </div>
 </div>
 
@@ -28,7 +28,7 @@ npm install
 
 ### Development Server
 
-Start the development server on http://localhost:3000
+Start the development server on http://localhost:1203
 
 ```bash
 npm run dev

@@ -1,8 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { resolve } from 'path'
-import { NuxtConfig } from '@nuxt/types'
+import { defineNuxtConfig } from 'nuxt/config'
 
-const config: NuxtConfig = {
+export default defineNuxtConfig({
     ssr: true,
 
     modules: [
@@ -19,9 +19,21 @@ const config: NuxtConfig = {
                 ],
             },
         ],
+        // [
+        //     '@nuxtjs/sentry',
+        //     {
+        //         /*
+        //          * Sentry module configuration
+        //          */
+        //     },
+        // ],
     ],
 
-    css: ['@/assets/css/main.less'],
+    css: [
+        '@/assets/css/main.less',
+        '@/assets/css/colors.less',
+        '@/assets/css/neu_brutalism.less',
+    ],
 
     postcss: {
         plugins: {
@@ -45,7 +57,6 @@ const config: NuxtConfig = {
     },
 
     app: {
-        __buildAssetsURL: '/_nuxt/',
         head: {
             meta: [{ name: 'naive-ui-style' }, { name: 'vueuc-style' }],
             link: [
@@ -59,13 +70,13 @@ const config: NuxtConfig = {
                     crossorigin: '',
                 },
                 {
-                    href: 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap',
+                    href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap',
                     rel: 'stylesheet',
                 },
                 {
                     rel: 'icon',
                     type: 'image/x-icon',
-                    href: '/_nuxt/assets/favicon.ico',
+                    href: '/favicon.ico',
                 },
             ],
         },
@@ -84,14 +95,30 @@ const config: NuxtConfig = {
                 : ['@juggle/resize-observer'],
     },
 
-    vite: {
-        optimizeDeps: {
-            include:
-                process.env.NODE_ENV === 'development'
-                    ? ['naive-ui', 'vueuc', 'date-fns-tz/esm/formatInTimeZone']
-                    : [],
+    runtimeConfig: {
+        public: {
+            apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL,
+            ENV: process.env.ENV,
+            cloudinaryName: process.env.NUXT_PRIVATE_CLOUDINARY_NAME,
+            cloudinaryPreset: process.env.NUXT_PRIVATE_CLOUDINARY_PRESET,
+            cloudinaryFolder: process.env.NUXT_PRIVATE_CLOUDINARY_FOLDER,
+            firebaseApiKey: process.env.NUXT_FIREBASE_API_KEY,
+            firebaseAuthDomain: process.env.NUXT_FIREBASE_AUTH_DOMAIN,
+            firebaseProjectId: process.env.NUXT_FIREBASE_PROJECT_ID,
+            firebaseStorageBucket: process.env.NUXT_FIREBASE_STORAGE_BUCKET,
+            firebaseMessagingSenderId:
+                process.env.NUXT_FIREBASE_MESSAGING_SENDER_ID,
+            firebaseAppId: process.env.NUXT_FIREBASE_APP_ID,
         },
+        private: {},
     },
-}
 
-export default config
+    // vite: {
+    // optimizeDeps: {
+    //     include:
+    //         process.env.NODE_ENV === 'development'
+    //             ? ['naive-ui', 'vueuc', 'date-fns-tz/esm/formatInTimeZone']
+    //             : [],
+    // },
+    // },
+})
